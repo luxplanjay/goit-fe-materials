@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.page {
+    padding: 20px;
+    font-family: Roboto, Arial, sans-serif;
+    background-color: #EEEEEE;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #061826;
+}
+
+.nav {
+    list-style: disc inside;
+    text-align: center;
+}
+
+.nav__item {
+    margin-bottom: 10px;
+}
+
+.nav__item:last-child {
+    margin-bottom: 0;
+}
+
+.nav__link {
+    padding: 5px;
+    font-size: 20px;
+    color: #336699;
+}
+
+.nav__link:hover, .nav__link:focus {
+    color: #F46036;
+}
