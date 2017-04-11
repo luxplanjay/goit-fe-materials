@@ -1,0 +1,32 @@
+.intro p {
+	font-size: 30px;
+}
+
+.second p {
+	font-size: 24px;
+}
+
+.sixth p, .sixth ul {
+	font-size: 20px;
+}
+
+.sixth__link {
+	text-decoration: underline;
+}
+
+.sixth .pref {
+	display: inline-block;
+	width: 55%;
+	margin-right: 5%;
+}
+
+.sixth .example {
+	display: inline-block;
+	vertical-align: top;
+	width: 35%;
+	margin-right: 0;
+}
+
+.sixth .example li::before {
+	content: '';
+}

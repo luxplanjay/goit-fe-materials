@@ -19,8 +19,11 @@
 }
 
 .nav {
+    width: 600px;
+    min-width: 320px;
+    margin: 0 auto;
     list-style: disc inside;
-    text-align: center;
+    text-align: left;
 }
 
 .nav__item {
