@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>Shower Presentation Engine</title>
-	<meta charset="utf-8">
+	<meta charset="utf-8">	
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
@@ -11,7 +11,7 @@
 <body class="shower list">
 
 <section class="slide intro">
-	<h2>Cross-Browser Compatibility</h2>
+	<h2>Кросс-браузерность</h2>
 
 	<p>Кроссбраузерная верстка – это верстка сайта, нацеленная на создание сайта, отображаемого в каждом браузере
 		одинаково корректно.</p>
@@ -29,33 +29,37 @@
 	<p>В каждом браузере это значение может быть разным. Свойства – это цвета, шрифты, их размер. Все это должно быть
 		описано в таблице стилей, в противном случае браузер будет самостоятельно проставлять значения, указанные по
 		умолчанию. Поэтому в каждом из них сайт будет отображаться немного по разному.</p>
-	<p>Используйте reset.css, normalize.css, Foundation или хотя бы * {p0; m0; bz;}</p>
+	<h3>Используйте</h3>
+	<ul>
+		<li>reset.css</li>
+		<li>normalize.css</li>
+		<li>Foundation</li>
+		<li>или хотя бы * { p0; m0; bz; }</li>
+	</ul>
 </section>
 
 <section class="slide third">
 	<h2>Валидность кода</h2>
 	<p>Не валидный код ведет к ошибкам отображения елементов страницы. Проверяйте ваш HTML и CSS код валидаторами.</p>
 	<ul>
-		<li>https://validator.w3.org/</li>
-		<li>https://jigsaw.w3.org/css-validator/</li>
+		<li><a href="https://validator.w3.org/" target="_blank">https://validator.w3.org/</a></li>
+		<li><a href="https://jigsaw.w3.org/css-validator/" target="_blank">https://jigsaw.w3.org/css-validator/</a></li>
 	</ul>
 </section>
 
 <section class="slide fourth">
 	<h2>Dry(don't repeat yourself) code</h2>
-	<p>Пишите dry(сухой) код. Что это значит? Это значит не используйте лишние css свойства которые ничего не делают для
-		вашего блока. Следите за тем чтобы свойства не повторялись и не переопределяли друг друга в контексте одного css
-		правила. Используйте минимальное количество кода для достижения цели.</p>
+	<p>Пишите dry(сухой) код. Что это значит? Не используйте лишние css свойства которые ничего не делают для вашего блока. Следите за тем чтобы свойства не повторялись и не переопределяли друг друга в контексте одного css правила. Используйте минимальное количество кода для достижения цели.</p>
 </section>
 
 <section class="slide fifth">
 	<h2>Инструменты разработчика</h2>
 	<p>Научитесь использовать плагины, позволяющее быстрее находить ошибки кода для каждого из браузеров.</p>
 	<ul>
-		<li>Chrome - http://getfirebug.com/releases/lite/chrome/</li>
-		<li>Opera - http://www.opera.com/dragonfly/</li>
-		<li>Mozila - https://addons.mozilla.org/ru/firefox/addon/firebug/</li>
-		<li>Edge - https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide</li>
+		<li>Chrome - <a href="http://getfirebug.com/releases/lite/chrome/" target="_blank">http://getfirebug.com/releases/lite/chrome/</a></li>
+		<li>Opera - <a href="http://www.opera.com/dragonfly/" target="_blank">http://www.opera.com/dragonfly/</a></li>
+		<li>Mozila - <a href="https://addons.mozilla.org/ru/firefox/addon/firebug/" target="_blank">https://addons.mozilla.org/ru/firefox/addon/firebug/</a></li>
+		<li>Edge - <a href="https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide" target="_blank">https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide</a></li>
 	</ul>
 </section>
 
@@ -63,7 +67,7 @@
 	<h2>Вендорные префиксы</h2>
 	<p>Вендорные префиксы это приставки, используемые производителями (вендорами) браузеров для экспериментальных, еще
 		не принятых в стандарт, CSS-свойств. Используйте инструменты для их автоматического добавления в код.</p>
-	<p class="sixth__link">Автопрефиксер - http://autoprefixer.github.io/ru/</p>
+	<p>Автопрефиксер - <a href="http://autoprefixer.github.io/ru/" target="_blank">http://autoprefixer.github.io/ru/</a></p>
 	<ul class="pref">
 		<li>-webkit- (Chrome, Safari, newer versions of Opera.)</li>
 		<li>-moz- (Firefox)</li>
@@ -73,8 +77,8 @@
 	<ul class="example">
 		<li>-webkit-transition: all 4s ease;</li>
 		<li>-moz-transition: all 4s ease;</li>
-		<li>-ms-transition: all 4s ease;</li>
 		<li>-o-transition: all 4s ease;</li>
+		<li>-ms-transition: all 4s ease;</li>
 		<li>transition: all 4s ease;</li>
 	</ul>
 </section>
@@ -83,7 +87,7 @@
 	<h2>Управление размером шрифта</h2>
 	<p>Выберите единицы в которых вы будете задавать размеры шрифтов на странице. Чем пользоваться это личный выбор
 		каждого.</p>
-	<p>Рекомендованная статья для ознакомления с относительными единицами https://habrahabr.ru/post/280125/</p>
+	<p>Рекомендованная статья для ознакомления с относительными единицами <a href="https://habrahabr.ru/post/280125/" target="_blank">https://habrahabr.ru/post/280125/</a></p>
 </section>
 
 <section class="slide outro">

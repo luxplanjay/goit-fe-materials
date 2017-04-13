@@ -3,15 +3,20 @@
 }
 
 .second p {
-	font-size: 24px;
+	font-size: 20px;
+	line-height: 1.3;
+}
+
+.second h3 {
+	font-size: 30px;
+}
+
+.second li {
+	font-size: 20px;
 }
 
 .sixth p, .sixth ul {
 	font-size: 20px;
-}
-
-.sixth__link {
-	text-decoration: underline;
 }
 
 .sixth .pref {
