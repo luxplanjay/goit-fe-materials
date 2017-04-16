@@ -1,45 +1,52 @@
 * {
-    padding: 0;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .page {
-    padding: 20px;
-    font-family: Roboto, Arial, sans-serif;
-    background-color: #EEEEEE;
+  padding: 20px;
+  font-family: Roboto, Arial, sans-serif;
+  background-color: #FDFFFC;
 }
 
-.page-title {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #061826;
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  margin: 0 auto;
 }
 
-.nav {
-    width: 600px;
-    min-width: 320px;
-    margin: 0 auto;
-    list-style: disc inside;
-    text-align: left;
+.section {
+  outline: 1px solid #E9E3E6;
+  flex: 0 49%;
+  padding: 20px;
 }
 
-.nav__item {
-    margin-bottom: 10px;
+.section-title {
+  color: #011627;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.nav__item:last-child {
-    margin-bottom: 0;
+.list {
+  list-style-position: inside;
+  font-size: 20px;
 }
 
-.nav__link {
-    padding: 5px;
-    font-size: 20px;
-    color: #336699;
+.list-item {
+  margin-bottom: 10px;
 }
 
-.nav__link:hover, .nav__link:focus {
-    color: #F46036;
+.list-item:last-child {
+  margin-bottom: 0;
+}
+
+.list-link {
+  padding: 5px;
+  color: #336699;
+}
+
+.list-link:hover, .list-link:focus {
+  color: #ED6A5A;
 }

@@ -1,0 +1,71 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*p, ul, a {*/
+	/*font-size: 16px;*/
+/*}*/
+
+.ide {
+	display: flex;
+	flex-flow: row wrap;
+	align-content: flex-start;
+}
+
+.ide h2 {
+	width: 100%;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+.slide__column {
+	width: 50%;
+	padding: 10px;
+}
+
+.console img {
+	max-width: 480px;
+}
+
+.console a {
+	margin-right: 150px;
+}
+
+.console a:last-child {
+	margin-right: 0;
+}
+
+
+.async-scripts {
+	font-size: 16px;
+}
+
+.vars {
+	font-size: 16px;
+}
+
+.vars figure {
+	display: inline-block;
+	width: 40%;
+	text-align: center;
+}
+
+.vars figure:last-child {
+	margin-right: 0;
+}
+
+.var-names {
+	font-size: 18px;
+}
+
+.operators {
+	font-size: 20px;
+}
+
+.else-if {
+	font-size: 20px;
+}

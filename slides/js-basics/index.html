@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="shower list">
+
+<section class="slide intro">
+	<h2>Основы JavaScript</h2>
+
+	<p>JavaScript – это язык программирования общего назначения. Он не предоставляет низкоуровневых средств работы с
+		памятью, процессором, итд, так как изначально был ориентирован на браузеры, в которых это не требуется.</p>
+</section>
+
+<section class="slide docs">
+	<h2>Справочники и спецификации</h2>
+	<p>Спецификация – это самый главный, определяющий документ, в котором написано, как себя ведёт JavaScript, браузер,
+		CSS и т.п. - <a href="http://www.ecma-international.org/publications/standards/Standard.htm">спецификация
+			JavaScript</a></p>
+
+	<p>Подробная информация по JavaScript и браузерам есть в справочниках.</p>
+	<ul>
+		<li><a href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla Developer Network</a></li>
+		<li><a href="http://devdocs.io/" target="_blank">devdocs.io</a></li>
+		<li><a href="https://developer.apple.com/safari/resources/">Safari docs</a></li>
+		<li><a href="http://javascript.ru/manual" target="_blank">справочник по JavaScript</a></li>
+	</ul>
+</section>
+
+<section class="slide ide">
+	<h2>Редакторы для кода</h2>
+	<section class="slide__column">
+		<h3>Для разработки обязательно нужен хороший редактор.</h3>
+		<ul>
+			<li><a href="https://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a></li>
+			<li><a href="https://www.visualstudio.com/" target="_blank">Visual Studio</a></li>
+			<li><a href="https://netbeans.org/" target="_blank">NetBeans</a></li>
+			<li><a href="https://atom.io/" target="_blank">Atom</a></li>
+			<li><a href="http://www.sublimetext.com/" target="_blank">Sublime</a></li>
+			<li><a href="http://brackets.io/" target="_blank">Brackets</a></li>
+		</ul>
+	</section>
+	<section class="slide__column">
+		<h3>Выбранный вами редактор должен иметь в своем арсенале:</h3>
+		<ul>
+			<li>Подсветку синтаксиса.</li>
+			<li>Автодополнение.</li>
+			<li>Возможность скрыть-раскрыть блок кода.</li>
+			<li>Линтер - инструмент который проверяет код на ошибки.</li>
+		</ul>
+	</section>
+</section>
+
+<section class="slide console">
+	<h2>Консоль разработчика</h2>
+	<p>При разработке скриптов всегда будут ошибки. Консоль показывает информацию, связанную с веб-страницей: сетевые
+		запросы, JavaScript, CSS, ошибки безопасности и предупреждения, а также сообщения об ошибках, предупреждениях и
+		сообщениях JavaScript, запущенным в контексте страницы. Позволяет вам взаимодействовать с веб-страницей, выполняя
+		выражения JavaScript в контексте страницы.</p>
+
+	<a href="http://discover-devtools.codeschool.com/" target="_blank">Компактный видео курс по работе с devtools</a>
+	<a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console" target="_blank">MDN guide</a>
+</section>
+
+<section class="slide script-tag">
+	<h2>Тег script</h2>
+	<p>Для вставки скрипта в документ мы просто пишем &lt;script&gt;, без дополнительных атрибутов и комментариев</p>
+	<pre>
+		<code>&lt;script&gt;</code>
+		<code>	alert('Hello, World!');</code>
+		<code>&lt;/script&gt;</code>
+		</pre>
+</section>
+
+
+<section class="slide external-script">
+	<h2>Внешние скрипты</h2>
+	<p>Если JavaScript-кода много – его выносят в отдельный файл, который подключается в HTML.</p>
+	<pre>
+		<code>&lt;script src="/path/to/script1.js"&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="/path/to/script2.js"&gt;&lt;/script&gt;</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Синхронные скрипты</h2>
+	<p>Браузер загружает и отображает HTML постепенно. Если браузер видит тег &lt;script&gt;, то он по стандарту обязан
+		сначала выполнить его, а потом показать оставшуюся часть страницы. Такое поведение называют «синхронным».</p>
+</section>
+
+<section class="slide async-scripts">
+	<h2>Асинхронные скрипты</h2>
+	<h3>Атрибут async</h3>
+	<p>Скрипт выполняется полностью асинхронно. То есть, при обнаружении &lt;script async src="..."&gt; браузер не
+		останавливает обработку страницы, а спокойно работает дальше. Когда скрипт будет загружен – он выполнится.</p>
+
+	<h3>Атрибут defer</h3>
+	<p>Скрипт также выполняется асинхронно, не заставляет ждать страницу, но есть два отличия от async.</p>
+	<pre>
+		<code>&lt;script src="1.js" defer&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="2.js" defer&gt;&lt;/script&gt;</code>
+		<code>html markup</code>
+	</pre>
+	<ul>
+		<li>Браузер гарантирует, что относительный порядок скриптов с defer будет сохранён</li>
+		<li>Скрипт с defer сработает, когда весь HTML-документ будет обработан браузером</li>
+	</ul>
+</section>
+
+<section class="slide vars">
+	<h2>Переменные</h2>
+	<ul>
+		<li>Переменные используются для хранения информации.</li>
+		<li>Переменная состоит из имени и выделенной области памяти, которая ему соответствует.</li>
+		<li>Для объявления переменной используется ключевое слово <strong>var</strong>:
+			<code>var message;</code>
+		</li>
+		<li>После объявления, можно записать в переменную данные:
+			<code>message = 'Hello';</code></li>
+		<li>Эти данные будут доступны при обращении по имени: <code>console.log( message );</code></li>
+	</ul>
+
+	<figure>
+		<img src="pictures/variable.png" alt="">
+		<figcaption>
+			<code>var message = "Hello!";</code>
+		</figcaption>
+	</figure>
+
+	<figure>
+		<img src="pictures/variable-change.png" alt="">
+		<figcaption>
+			<code>message = "World!";</code>
+		</figcaption>
+	</figure>
+</section>
+
+<section class="slide var-names">
+	<h2>Имена переменных</h2>
+	<ul>
+		<li>Имя может состоять из: букв, цифр, символов $ и _</li>
+		<li>Первый символ не должен быть цифрой
+			<ul>
+				<li>не верно - <code>var 123myVariable;</code></li>
+				<li>верно - <code>var myVariable123;</code></li>
+			</ul>
+		</li>
+		<li>Регистр букв имеет значение, apple и aPplE две разные переменные
+			<ul>
+				<li><code>var apple;</code></li>
+				<li><code>var aPplE;</code></li>
+			</ul>
+		</li>
+		<li>Зарезервированные имена
+			<code>var, class, return, export ...</code>
+		</li>
+		<li>Имя переменной должно быть понятным
+			<ul>
+				<li>плохо - <code>var yabloko, chislo, moyaCar, naborIz4;</code></li>
+				<li>хорошо - <code>var apple, num, myCar, list;</code></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Типы данных</h2>
+	<ul>
+		<li>Число «number»: <code>var n = 10;</code></li>
+		<li>Строка «string»: <code>var str = "just some text";</code></li>
+		<li>Булевый тип «boolean»: <code>var status = true;</code><code>status = false;</code></li>
+		<li>Специальное значение «undefined»: <code>var age = undefined;</code></li>
+		<li>Специальное значение «null»: <code>var name = null;</code></li>
+		<li>Объекты «object»: <code>var dog = { age: 5, name: "Rex" };</code></li>
+	</ul>
+</section>
+
+<section class="slide operators">
+	<h2>Основные операторы</h2>
+	<p>Сложение, вычитание, умножение, деление, остаток от деления</p>
+	<pre>
+				<code>var a = 2 + 2; // 4</code>
+				<code>var b = 3 - 2; // 1</code>
+				<code>var c  = 3 * 3; // 9</code>
+				<code>var d = 4 / 2; // 2</code>
+				<code>var e = 5 % 2; // 1</code>
+			</pre>
+</section>
+
+<section class="slide operators">
+	<h2>Основные операторы</h2>
+	<div class="double">
+		<div>
+			<p>Конкатенация (сложение строк):</p>
+			<pre>
+				<code>var str = "My" + "String";</code>
+				<code>console.log(str) //MyString</code>
+			</pre>
+		</div>
+		<div>
+			<p>Приведение строки к числу:</p>
+			<pre>
+				<code>var a = 1, b = "2";</code>
+				<code>a + Number(b) // 3</code>
+				<code>a + +b // 3</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide operators">
+	<h2>Инкремент ++ и декремент --</h2>
+	<div class="double">
+		<div>
+			<h4>Инкремент:</h4>
+			<pre>
+				<code>var a = 2;</code>
+				<code>a++;</code>
+				<code>console.log(a); //3</code>
+			</pre>
+		</div>
+		<div>
+			<h4>Декремент:</h4>
+			<pre>
+				<code>var b = 5;</code>
+				<code>b--;</code>
+				<code>console.log(b); //4</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide">
+	<h2>Операторы сравнения</h2>
+	<ul>
+		<li>Больше/меньше: <code>a > b</code>, <code>a < b</code></li>
+		<li>Больше/меньше или равно: <code>a >= b</code>, <code>a <= b</code></li>
+		<li>Равенство: <code>a == b</code></li>
+		<li>Не равенство: <code>a != b</code></li>
+		<li>Строгое равенство: <code>a === b</code></li>
+		<li>Строгое неравенство: <code>a !== b</code></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Логические(Булевые) значения</h2>
+	<ul>
+		<li>true – имеет смысл «да», «верно», «истина», 1</li>
+		<li>false – означает «нет», «неверно», «ложь», 0</li>
+	</ul>
+
+	<pre>
+		<code>console.log( 5 > 2 ); // true, верно</code>
+		<code>console.log( 3 == 1 ); // false, неверно</code>
+		<code>console.log( 3 != 1 ); // true, верно</code>
+		<code>console.log( 0 == false ); // true, верно</code>
+		<code>console.log( 0 === false ); // false, неверно</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Взаимодействие с пользователем</h2>
+	<ul>
+		<li>alert: <code>alert(text);</code></li>
+		<li>prompt: <code>var name = prompt(text, default);</code></li>
+		<li>confirm: <code>var isHuman = confirm(text);</code></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Условный оператор if</h2>
+	<p>Когда в зависимости от условия нужно выполнить различные действия, используется оператор if.</p>
+	<pre>
+		<code>var age = prompt("Введите ваш возраст:", '')</code>
+		<code>if ( age < 18) {</code>
+		<code>	alert("младше 18");</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Неверное условие, else</h2>
+	<p>Необязательный блок else («иначе») выполняется, если условие неверно.</p>
+	<pre>
+		<code>var age = prompt("Введите ваш возраст:", '')</code>
+		<code>if (age < 18) {</code>
+		<code>	alert("младше 18");</code>
+		<code>} else {</code>
+		<code>	alert("старше или ровно 18");</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide else-if">
+	<h2>Несколько условий, else if</h2>
+	<p>Если нужно проверить несколько вариантов условия используется блок else if.</p>
+	<pre>
+		<code>var age = prompt("Введите ваш возраст:", '')</code>
+		<code>if (age < 18) {</code>
+		<code>	alert("младше 18");</code>
+		<code>} else if (age == 18) {</code>
+		<code>	alert("ровно 18");</code>
+		<code>} else {</code>
+		<code>	alert("старше 18");</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Логические операторы</h2>
+</section>
+<section class="slide">
+	<h2></h2>
+</section>
+<section class="slide">
+	<h2></h2>
+</section>
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+</body>
+</html>

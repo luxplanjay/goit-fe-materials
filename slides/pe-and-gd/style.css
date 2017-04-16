@@ -1,117 +1,118 @@
 .first {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .first h2 {
-	font-size: 44px;
+  font-size: 44px;
 }
 
 .first img {
-	max-height: 212px;
-	width: 65%;
+  max-height: 212px;
+  width: 65%;
 }
 
 .first .vs {
-	width: 15%;
-	height: 60px;
+  width: 15%;
+  height: 60px;
 }
 
 /* second slide */
 .second {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .second h2 {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .second span {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .second img {
-	max-height: 400px;
-	max-width: 50%;
+  max-height: 400px;
+  max-width: 50%;
 }
 
 .second ul {
-	width: 45%;
-	font-size: 24px;
+  width: 45%;
+  font-size: 24px;
 }
 
 /*third slide*/
 
 .third {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .third img {
-	width: 520px;
-	max-height: 320px;
+  width: 520px;
+  max-height: 320px;
 }
 
 .third p {
-	font-size: 18px;
-	line-height: 1.3;
-	text-indent: 24px;
+  font-size: 18px;
+  line-height: 1.3;
+  text-indent: 24px;
 }
 
 /* fourth slide */
 
 .fourth {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .fourth h2, .fourth h3 {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .fourth h3 {
-	font-size: 26px;
-	color: #585a5e;
-	font-weight: bold;
+  font-size: 26px;
+  color: #585a5e;
+  font-weight: bold;
 }
 
 .fourth img {
-	max-width: 50%;
-	max-height: 220px;
+  max-width: 50%;
+  max-height: 220px;
 }
+
 .fourth ol {
-	font-size: 16px;
-	max-width: 45%;
+  font-size: 16px;
+  max-width: 45%;
 }
 
 .fourth ol span {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /* fifth slide */
 .fifth span {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /* sixth slide */
 .sixth h2 {
-	font-size: 40px;
+  font-size: 40px;
 }
 
 /* outro */
 
 .outro {
-	background: url("pictures/cat-happy.jpg");
-	-webkit-background-size: cover;
-	background-size: cover;
+  background: url("pictures/cat-happy.jpg");
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 .outro h2 {
-	color: #fefefe;
+  color: #fefefe;
 }
