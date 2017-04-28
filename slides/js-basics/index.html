@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>JavaScript Basics</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,19 +11,15 @@
 <body class="shower list">
 
 <section class="slide intro">
-	<h2>Основы JavaScript</h2>
-
-	<p>JavaScript – это язык программирования общего назначения. Он не предоставляет низкоуровневых средств работы с
-		памятью, процессором, итд, так как изначально был ориентирован на браузеры, в которых это не требуется.</p>
+	<h2>Основы</h2>
 </section>
 
 <section class="slide docs">
 	<h2>Справочники и спецификации</h2>
-	<p>Спецификация – это самый главный, определяющий документ, в котором написано, как себя ведёт JavaScript, браузер,
-		CSS и т.п. - <a href="http://www.ecma-international.org/publications/standards/Standard.htm">спецификация
-			JavaScript</a></p>
+	<p><a href="http://www.ecma-international.org/publications/standards/Standard.htm" target="_blank">Cпецификация
+		JavaScript</a> – это самый главный, определяющий документ, в котором написано, как себя ведёт JavaScript. </p>
 
-	<p>Подробная информация по JavaScript и браузерам есть в справочниках.</p>
+	<h3>Подробная информация по JavaScript и браузерам есть в справочниках.</h3>
 	<ul>
 		<li><a href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla Developer Network</a></li>
 		<li><a href="http://devdocs.io/" target="_blank">devdocs.io</a></li>
@@ -33,10 +29,10 @@
 </section>
 
 <section class="slide ide">
-	<h2>Редакторы для кода</h2>
+	<h2>Редакторы кода</h2>
 	<section class="slide__column">
-		<h3>Для разработки обязательно нужен хороший редактор.</h3>
-		<ul>
+		<h3>Обязательно нужен хороший редактор:</h3>
+		<ul class="double">
 			<li><a href="https://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a></li>
 			<li><a href="https://www.visualstudio.com/" target="_blank">Visual Studio</a></li>
 			<li><a href="https://netbeans.org/" target="_blank">NetBeans</a></li>
@@ -46,7 +42,7 @@
 		</ul>
 	</section>
 	<section class="slide__column">
-		<h3>Выбранный вами редактор должен иметь в своем арсенале:</h3>
+		<h3>Редактор должен иметь в своем арсенале:</h3>
 		<ul>
 			<li>Подсветку синтаксиса.</li>
 			<li>Автодополнение.</li>
@@ -77,13 +73,12 @@
 		</pre>
 </section>
 
-
 <section class="slide external-script">
 	<h2>Внешние скрипты</h2>
-	<p>Если JavaScript-кода много – его выносят в отдельный файл, который подключается в HTML.</p>
+	<p>JavaScript код выносят в отдельный файл, который подключается в HTML.</p>
 	<pre>
-		<code>&lt;script src="/path/to/script1.js"&gt;&lt;/script&gt;</code>
-		<code>&lt;script src="/path/to/script2.js"&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="/path/to/script-1.js"&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="/path/to/script-2.js"&gt;&lt;/script&gt;</code>
 	</pre>
 </section>
 
@@ -91,25 +86,44 @@
 	<h2>Синхронные скрипты</h2>
 	<p>Браузер загружает и отображает HTML постепенно. Если браузер видит тег &lt;script&gt;, то он по стандарту обязан
 		сначала выполнить его, а потом показать оставшуюся часть страницы. Такое поведение называют «синхронным».</p>
+	<pre>
+		<code>&lt;p&gt;First paragraph.&lt;/p&gt;</code>
+		<code>&lt;script&gt;</code>
+		<code>	alert('Hello!');</code>
+		<code>&lt;/script&gt;</code>
+		<code>&lt;p&gt;Second paragraph.&lt;/p&gt;</code>
+	</pre>
 </section>
 
 <section class="slide async-scripts">
 	<h2>Асинхронные скрипты</h2>
-	<h3>Атрибут async</h3>
-	<p>Скрипт выполняется полностью асинхронно. То есть, при обнаружении &lt;script async src="..."&gt; браузер не
-		останавливает обработку страницы, а спокойно работает дальше. Когда скрипт будет загружен – он выполнится.</p>
+	<p>Атрибут <b>async</b> - cкрипт выполняется полностью асинхронно. <br>То есть, при обнаружении &lt;script src="..."
+		async&gt; браузер не останавливает обработку страницы, а спокойно работает дальше. Когда скрипт будет загружен – он
+		выполнится.</p>
 
-	<h3>Атрибут defer</h3>
-	<p>Скрипт также выполняется асинхронно, не заставляет ждать страницу, но есть два отличия от async.</p>
+	<p>Атрибут <b>defer</b> - скрипт также выполняется асинхронно, не заставляет ждать страницу, но есть два отличия от
+		async.</p>
 	<pre>
-		<code>&lt;script src="1.js" defer&gt;&lt;/script&gt;</code>
-		<code>&lt;script src="2.js" defer&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="script-1.js" defer&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="script-2.js" defer&gt;&lt;/script&gt;</code>
 		<code>html markup</code>
 	</pre>
 	<ul>
 		<li>Браузер гарантирует, что относительный порядок скриптов с defer будет сохранён</li>
 		<li>Скрипт с defer сработает, когда весь HTML-документ будет обработан браузером</li>
 	</ul>
+</section>
+
+<section class="slide">
+	<h2>Современный стандарт</h2>
+	<p>Чтобы перевести код в режим полного соответствия современному стандарту, нужно указать специальную директиву <b>use
+		strict</b>.</p>
+	<pre>
+		<code>'use strict';</code>
+		<code>...</code>
+		<code>...</code>
+		<code>...</code>
+	</pre>
 </section>
 
 <section class="slide vars">
@@ -122,7 +136,7 @@
 		</li>
 		<li>После объявления, можно записать в переменную данные:
 			<code>message = 'Hello';</code></li>
-		<li>Эти данные будут доступны при обращении по имени: <code>console.log( message );</code></li>
+		<li>Эти данные будут доступны при обращении по имени: <code>console.log(message);</code></li>
 	</ul>
 
 	<figure>
@@ -168,7 +182,7 @@
 	</ul>
 </section>
 
-<section class="slide">
+<section class="slide data-types">
 	<h2>Типы данных</h2>
 	<ul>
 		<li>Число «number»: <code>var n = 10;</code></li>
@@ -176,13 +190,28 @@
 		<li>Булевый тип «boolean»: <code>var status = true;</code><code>status = false;</code></li>
 		<li>Специальное значение «undefined»: <code>var age = undefined;</code></li>
 		<li>Специальное значение «null»: <code>var name = null;</code></li>
-		<li>Объекты «object»: <code>var dog = { age: 5, name: "Rex" };</code></li>
+		<li>Объекты «object»: <code>var dog = { age: 1, name: "Mango" };</code></li>
 	</ul>
+</section>
+
+<section class="slide">
+	<h2>Преобразование типов для примитивов</h2>
+	<h3>Три типа преобразования:</h3>
+	<ul>
+		<li>Строковое преобразование - происходит, когда требуется представление чего-либо в виде строки.</li>
+		<li>Числовое преобразование - происходит в математических функциях и выражениях, а также при сравнении данных
+			различных типов (за исключением строгих сравнений).
+		</li>
+		<li>Преобразование к логическому значению - происходит в логическом контексте, таком как <code>if(value)</code>, и
+			при применении логических операторов.
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/types-conversion" target="_blank">Обязательно к прочтению</a>
 </section>
 
 <section class="slide operators">
 	<h2>Основные операторы</h2>
-	<p>Сложение, вычитание, умножение, деление, остаток от деления</p>
+	<h3>Сложение, вычитание, умножение, деление, остаток от деления:</h3>
 	<pre>
 				<code>var a = 2 + 2; // 4</code>
 				<code>var b = 3 - 2; // 1</code>
@@ -194,60 +223,66 @@
 
 <section class="slide operators">
 	<h2>Основные операторы</h2>
-	<div class="double">
-		<div>
-			<p>Конкатенация (сложение строк):</p>
-			<pre>
-				<code>var str = "My" + "String";</code>
-				<code>console.log(str) //MyString</code>
-			</pre>
-		</div>
-		<div>
-			<p>Приведение строки к числу:</p>
-			<pre>
-				<code>var a = 1, b = "2";</code>
-				<code>a + Number(b) // 3</code>
-				<code>a + +b // 3</code>
-			</pre>
-		</div>
-	</div>
+	<h3>Конкатенация (сложение строк):</h3>
+	<pre>
+		<code>var str = "I " + "love " + "Java" + "Script";</code>
+		<code>console.log(str) //I love JavaScript</code>
+	</pre>
+	<h3>Приведение строки к числу:</h3>
+	<pre>
+		<code>var a = 1, b = "2";</code>
+		<code>a + Number(b) // 3</code>
+		<code>a + +b // 3</code>
+	</pre>
 </section>
 
 <section class="slide operators">
-	<h2>Инкремент ++ и декремент --</h2>
+	<h2>Инкремент и декремент</h2>
 	<div class="double">
 		<div>
-			<h4>Инкремент:</h4>
+			<h3>Инкремент(постфиксный):</h3>
 			<pre>
 				<code>var a = 2;</code>
-				<code>a++;</code>
-				<code>console.log(a); //3</code>
+				<code>console.log(a++); //2</code>
 			</pre>
 		</div>
 		<div>
-			<h4>Декремент:</h4>
+			<h3>Инкремент(префиксный):</h3>
+			<pre>
+				<code>var a = 2;</code>
+				<code>console.log(++a); //3</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Декремент(постфиксный):</h3>
 			<pre>
 				<code>var b = 5;</code>
-				<code>b--;</code>
-				<code>console.log(b); //4</code>
+				<code>console.log(b--); //5</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Декремент(префиксный):</h3>
+			<pre>
+				<code>var b = 5;</code>
+				<code>console.log(--b); //4</code>
 			</pre>
 		</div>
 	</div>
 </section>
 
-<section class="slide">
+<section class="slide comparison">
 	<h2>Операторы сравнения</h2>
 	<ul>
 		<li>Больше/меньше: <code>a > b</code>, <code>a < b</code></li>
 		<li>Больше/меньше или равно: <code>a >= b</code>, <code>a <= b</code></li>
 		<li>Равенство: <code>a == b</code></li>
-		<li>Не равенство: <code>a != b</code></li>
+		<li>Неравенство: <code>a != b</code></li>
 		<li>Строгое равенство: <code>a === b</code></li>
 		<li>Строгое неравенство: <code>a !== b</code></li>
 	</ul>
 </section>
 
-<section class="slide">
+<section class="slide boolean">
 	<h2>Логические(Булевые) значения</h2>
 	<ul>
 		<li>true – имеет смысл «да», «верно», «истина», 1</li>
@@ -263,7 +298,7 @@
 	</pre>
 </section>
 
-<section class="slide">
+<section class="slide user-input">
 	<h2>Взаимодействие с пользователем</h2>
 	<ul>
 		<li>alert: <code>alert(text);</code></li>
@@ -272,26 +307,26 @@
 	</ul>
 </section>
 
-<section class="slide">
+<section class="slide if">
 	<h2>Условный оператор if</h2>
 	<p>Когда в зависимости от условия нужно выполнить различные действия, используется оператор if.</p>
 	<pre>
-		<code>var age = prompt("Введите ваш возраст:", '')</code>
-		<code>if ( age < 18) {</code>
-		<code>	alert("младше 18");</code>
+		<code>var age = prompt('Введите Ваш возраст: ', '')</code>
+		<code>if (age < 18) {</code>
+		<code>	alert('младше 18');</code>
 		<code>}</code>
 	</pre>
 </section>
 
-<section class="slide">
+<section class="slide else">
 	<h2>Неверное условие, else</h2>
 	<p>Необязательный блок else («иначе») выполняется, если условие неверно.</p>
 	<pre>
-		<code>var age = prompt("Введите ваш возраст:", '')</code>
+		<code>var age = prompt('Введите ваш возраст: ', '')</code>
 		<code>if (age < 18) {</code>
-		<code>	alert("младше 18");</code>
+		<code>	alert('младше 18');</code>
 		<code>} else {</code>
-		<code>	alert("старше или ровно 18");</code>
+		<code>	alert('старше или ровно 18');</code>
 		<code>}</code>
 	</pre>
 </section>
@@ -300,13 +335,13 @@
 	<h2>Несколько условий, else if</h2>
 	<p>Если нужно проверить несколько вариантов условия используется блок else if.</p>
 	<pre>
-		<code>var age = prompt("Введите ваш возраст:", '')</code>
+		<code>var age = prompt('Введите ваш возраст: ', '')</code>
 		<code>if (age < 18) {</code>
-		<code>	alert("младше 18");</code>
+		<code>	alert('младше 18');</code>
 		<code>} else if (age == 18) {</code>
-		<code>	alert("ровно 18");</code>
+		<code>	alert('ровно 18');</code>
 		<code>} else {</code>
-		<code>	alert("старше 18");</code>
+		<code>	alert('старше 18');</code>
 		<code>}</code>
 	</pre>
 </section>
@@ -314,9 +349,89 @@
 <section class="slide">
 	<h2>Логические операторы</h2>
 </section>
-<section class="slide">
-	<h2></h2>
+
+<section class="slide loops">
+	<h2>Цикл while</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>while(условие) {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>var i = 0;</code>
+				<code>while(i <= 5) {</code>
+				<code>	console.log(i);</code>
+				<code>	i++;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
 </section>
+
+<section class="slide loops">
+	<h2>Цикл do while</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>do {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>} while(условие)</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>var i = 0;</code>
+				<code>do {</code>
+				<code>	console.log(i);</code>
+				<code>	i++;</code>
+				<code>} while(i <= 5)</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide loops">
+	<h2>Цикл for</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>for(инициализация; условие; итерация) {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>for(var i = 0; i <= 5; i++) {</code>
+				<code>	console.log(i);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+	<h3>Цикл выполняется так:</h3>
+	<ul>
+		<li>Инициализация - выполняется один-единственный раз, при заходе в цикл.</li>
+		<li>Условие - проверяется перед каждой итерацией и при входе в цикл, если оно нарушено, то происходит выход.</li>
+		<li>Тело - выполняется в случае удовлетворения условия.</li>
+		<li>Итерация - выполняется после тела на каждой итерации, но перед проверкой условия.</li>
+	</ul>
+</section>
+
 <section class="slide">
 	<h2></h2>
 </section>

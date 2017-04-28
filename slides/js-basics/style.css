@@ -1,20 +1,12 @@
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-/*p, ul, a {*/
-	/*font-size: 16px;*/
-/*}*/
-
-.ide {
-	display: flex;
-	flex-flow: row wrap;
-	align-content: flex-start;
+p, ul, a {
+	font-size: 18px;
 }
 
-.ide h2 {
+h2 {
 	width: 100%;
 }
 
@@ -22,29 +14,53 @@ h3 {
 	font-size: 20px;
 }
 
-.slide__column {
-	width: 50%;
-	padding: 10px;
+.intro {
+	position: relative;
+	background-image: url('pictures/intro.jpg');
+	background-size: cover;
 }
 
-.console img {
-	max-width: 480px;
+.intro h2 {
+	position: absolute;
+	top: 65%;
+	font-size: 100px;
+	color: #333;
+
+}
+
+/* $ide */
+.ide {
+	display: flex;
+	flex-flow: row wrap;
+	align-content: flex-start;
+}
+
+.slide__column {
+	width: 50%;
+}
+
+/* $console */
+.console {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .console a {
-	margin-right: 150px;
+	font-size: 22px;
+	margin-bottom: 20px;
 }
 
 .console a:last-child {
-	margin-right: 0;
+	margin-bottom: 0;
 }
 
-
-.async-scripts {
-	font-size: 16px;
+/* $async-scripts */
+.async-scripts p, .async-scripts code {
+	font-size: 18px;
 }
 
-.vars {
+.vars p, .vars figure {
 	font-size: 16px;
 }
 
@@ -58,14 +74,47 @@ h3 {
 	margin-right: 0;
 }
 
-.var-names {
+/* $data-types */
+.data-types ul {
+	font-size: 22px !important;
+}
+
+/* $operators */
+.operators h3 {
+	font-size: 20px;
+}
+
+/* $comparison */
+.comparison ul {
+	font-size: 20px;
+}
+
+/* $boolean */
+.boolean ul {
+	font-size: 20px;
+}
+
+/* $user-input */
+.user-input ul {
+	font-size: 24px;
+}
+
+/* $if, $else, $else-if */
+.if p, .else p, .else-if p {
+	font-size: 20px;
+}
+
+.else-if code {
+	font-size: 20px;
+}
+
+/* $loops */
+
+.loops code {
 	font-size: 18px;
 }
 
-.operators {
-	font-size: 20px;
+.loops ul {
+	font-size: 16px;
 }
 
-.else-if {
-	font-size: 20px;
-}
