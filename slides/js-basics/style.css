@@ -84,6 +84,10 @@ h3 {
 	font-size: 20px;
 }
 
+.operators code {
+	font-size: 20px;
+}
+
 /* $comparison */
 .comparison ul {
 	font-size: 20px;
@@ -118,3 +122,25 @@ h3 {
 	font-size: 16px;
 }
 
+/* $arrays */
+.arrays ul, .arrays code {
+	font-size: 16px;
+}
+
+/* $objects */
+
+.objects p, .objects code {
+	font-size: 16px;
+}
+
+/* $functions */
+
+.functions code {
+	font-size: 16px;
+}
+
+/* $hw */
+
+.hw ul {
+	font-size: 16px;
+}

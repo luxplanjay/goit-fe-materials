@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>JavaScript Basics</title>
+	<title>JS Basics</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -160,26 +160,21 @@
 		<li>Имя может состоять из: букв, цифр, символов $ и _</li>
 		<li>Первый символ не должен быть цифрой
 			<ul>
-				<li>не верно - <code>var 123myVariable;</code></li>
-				<li>верно - <code>var myVariable123;</code></li>
+				<li>не верно - <code>var 123myVariable, cool-string;</code></li>
+				<li>верно - <code>var myVariable123, coolString;</code></li>
 			</ul>
 		</li>
-		<li>Регистр букв имеет значение, apple и aPplE две разные переменные
-			<ul>
-				<li><code>var apple;</code></li>
-				<li><code>var aPplE;</code></li>
-			</ul>
-		</li>
-		<li>Зарезервированные имена
-			<code>var, class, return, export ...</code>
+		<li>Регистр букв имеет значение: <code>var apple;</code> и <code>var aPplE;</code> это две разные переменные</li>
+		<li>Зарезервированные имена: <code>var, class, return, export ...</code>
 		</li>
 		<li>Имя переменной должно быть понятным
 			<ul>
-				<li>плохо - <code>var yabloko, chislo, moyaCar, naborIz4;</code></li>
-				<li>хорошо - <code>var apple, num, myCar, list;</code></li>
+				<li>плохо - <code>var yabloko, chislo, massivProductov, naborIz4;</code></li>
+				<li>хорошо - <code>var apple, num, goodsArr, list;</code></li>
 			</ul>
 		</li>
 	</ul>
+	<a href="http://learn.javascript.ru/variable-names" target="_blank">Обязательно к прочтению</a>
 </section>
 
 <section class="slide data-types">
@@ -211,14 +206,13 @@
 
 <section class="slide operators">
 	<h2>Основные операторы</h2>
-	<h3>Сложение, вычитание, умножение, деление, остаток от деления:</h3>
-	<pre>
-				<code>var a = 2 + 2; // 4</code>
-				<code>var b = 3 - 2; // 1</code>
-				<code>var c  = 3 * 3; // 9</code>
-				<code>var d = 4 / 2; // 2</code>
-				<code>var e = 5 % 2; // 1</code>
-			</pre>
+	<ul>
+		<li>Сложение: <code>var a = 2 + 2; // 4</code></li>
+		<li>Вычитание: <code>var b = 3 - 2; // 1</code></li>
+		<li>Умножение: <code>var c = 3 * 3; // 9</code></li>
+		<li>Деление: <code>var d = 4 / 2; // 2</code></li>
+		<li>Остаток от деления: <code>var e = 5 % 2; // 1</code></li>
+	</ul>
 </section>
 
 <section class="slide operators">
@@ -433,8 +427,282 @@
 </section>
 
 <section class="slide">
-	<h2></h2>
+	<h2>Строки</h2>
+	<p>В JavaScript любые текстовые данные это строки.</p>
+	<p><code>var str = 'This is a string';</code></p>
+	<h3>Свойства и методы</h3>
+	<ul>
+		<li><code>str.length</code> - вернет длину строки</li>
+		<li><code>str.charAt(n)</code> - вернет строку из одного символа на позиции n</li>
+		<li><code>str.toLowerCase()</code> и <code>str.toUpperCase</code> - вернут строку в соответствующем регистре</li>
+		<li><code>str.indexOf(val)</code> - вернет позицию на которой находится подстрока или -1, если ничего не найдено
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/string" target="_blank"> Обязательно к прочтению</a>
 </section>
+
+<section class="slide">
+	<h2>Массивы</h2>
+	<p>Массив – разновидность объекта, где в качестве ключей выбраны цифры, с дополнительными методами и свойством length.
+		<code>var arr = [1, 2, '3', '4'];</code></p>
+
+	<h3>Свойства и методы</h3>
+	<ul>
+		<li><code>arr.length</code> - вернет длину массива.</li>
+		<li><code>arr.pop()</code> - удаляет последний елемент массива и возвращает его.</li>
+		<li><code>arr.push(val)</code> - добавляет элемент в конец массива.</li>
+		<li><code>arr.shift()</code> - удаляет из массива первый элемент и возвращает его.</li>
+		<li><code>arr.unshift(val)</code> - добавляет элемент в начало массива.</li>
+	</ul>
+	<a href="http://learn.javascript.ru/array" target="_blank"> Обязательно к прочтению</a>
+</section>
+
+<section class="slide arrays">
+	<h2>Массивы: методы</h2>
+	<ul>
+		<li><b>split(val, count)</b> - - превратит строку в массив, разбив ее по разделителю val.
+			<p><code>var arr = 'hello'.split(''); console.log(arr); // ['h', 'e', 'l', 'l', 'o']</code></p>
+		</li>
+		<li><b>join(val)</b> - берет массив и склеивает его в строку, используя val как разделитель.
+			<p><code>var str = arr.join(''); console.log(str); // hello</code></p>
+		</li>
+		<li><b>splice(index[, deleteCount, elem1, ..., elemN])</b> - начиная с позиции index, удалить deleteCount элементов.
+			<p><code>arr.splice(1, 1);</code><code>console.log(arr); // ['h', 'l', 'l', 'o']</code></p>
+		</li>
+		<li><b>slice(begin, end)</b> - копирует элементы от begin, до end (не включая end)
+			<p><code>var newArr = arr.slice(1, 3); console.log(newArr); // ['l', 'l']</code></p>
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/array-methods" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide">
+	<h2>Функции</h2>
+	<p>Функции это один из фундаментальных строительных блоков в JavaScript. Функция это JavScript процедура - набор
+		операторов, который выполняет задачу или вычисляет значение.</p>
+	<div>
+		<pre>
+			<code>function имя функции(список параметров) {</code>
+			<code>...тело функции...</code>
+			<code>}</code>
+			<code>...</code>
+			<code>имя функции(...);</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide functions">
+	<h2>Функции: область видимости переменных</h2>
+	<p>В JavaScript область видимости переменных ограничена телом функции.</p>
+	<pre>
+		<code>function showMessage() {</code>
+		<code>	var message = 'Mango says woof!'; // локальная переменная</code>
+		<code>	alert(message);</code>
+		<code>}</code>
+		<code>...</code>
+		<code>showMessage(); // 'Mango says woof!'</code>
+		<code>...</code>
+		<code>alert(message); // <-- будет ошибка, т.к. переменная видна только внутри showMessage</code>
+	</pre>
+	<a href="http://learn.javascript.ru/function-basics" target="_blank">Обязательно к прочтению</a>
+	<a href="https://docs.microsoft.com/en-us/scripting/javascript/advanced/variable-scope-javascript" target="_blank">Обязательно
+		к прочтению</a>
+</section>
+
+<section class="slide functions">
+	<h2>Функции: возврат значения</h2>
+	<p>Функция может возвратить результат, который будет передан в вызвавший её код.</p>
+	<ul>
+		<li>Для возврата значения используется директива <i>return</i></li>
+		<li><i>return</i> может находиться в любом месте функции. Как только до <i>return</i> доходит управление – функция
+			завершается и значение передается обратно.
+		</li>
+		<li>Вызовов <i>return</i> может быть и несколько.</li>
+		<li>Директива <i>return</i> может также использоваться без значения, чтобы прекратить выполнение и выйти из функции.
+		</li>
+	</ul>
+	<div class="double">
+		<pre>
+		<code>function foo(a, b) {</code>
+		<code>	return a + b;</code>
+		<code>}</code>
+		<code>console.log(foo(2, 3)); // 5</code>
+	</pre>
+		<a href="http://learn.javascript.ru/function-basics#возврат-значения" target="_blank">Обязательно к прочтению</a>
+	</div>
+</section>
+
+<section class="slide functions">
+	<h2>Функциональные выражения</h2>
+	<p>В JavaScript функция является значением, таким же как строка или число.</p>
+	<ul>
+		<li>Function Declaration – функция, объявленная в основном потоке кода.</li>
+		<li>Function Expression – объявление функции в контексте какого-либо выражения, например присваивания.</li>
+	</ul>
+	<pre>
+		<code>var foo = function(параметры) {</code>
+		<code>	// тело функции</code>
+		<code>};</code>
+		<code>...</code>
+		<code>foo(аргументы);</code>
+	</pre>
+
+	<a href="http://learn.javascript.ru/function-declaration-expression" target="_blank">Обязательно к прочтению</a>
+	<a href="http://learn.javascript.ru/named-function-expression" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide functions">
+	<h2>Immediately-Invoked Function Expression</h2>
+	<p>Немедленно вызываемая функция в JavaScript (IIFE) — это синтаксическая конструкция, позволяющая вызвать функцию
+		сразу же в месте ее определения.</p>
+	<pre>
+		<code>(function () {</code>
+		<code>	// ...</code>
+		<code>})();</code>
+	</pre>
+	<p>Такие конструкции используются для создания локальных областей видимости переменных. Глобальный namespace остается
+		'чистым' т.к. переменные обьявленые внутри IIFE не видны вне функции.</p>
+	<a href="http://getinstance.info/articles/javascript/immediately-invoked-function-expressions/" target="_blank">Обязательно
+		к прочтению</a>
+</section>
+
+<section class="slide">
+	<h2>Обьекты</h2>
+	<p><b>Обьект</b> - это неупорядоченная коллекция свойств, ассоциативный массив: структура, пригодная для хранения
+		любых данных в формате ключ-значение.</p>
+	<h3>В JavaScript есть три категории объектов:</h3>
+	<ul>
+		<li><i>Объекты базового типа</i> – это объекты, определённые в спецификации ECMAScript. Например, объекты типа
+			Array,
+			Function, Date или RegExp являются объектами базового типа.
+		</li>
+		<li><i>Объекты среды выполнения</i> – это объекты, определённые в среде выполнения (такой как браузер). Например,
+			объекты
+			типа HTMLElement, являются объектами среды выполнения.
+		</li>
+		<li><i>Пользовательские объекты</i> – это любой объект, созданный в результате выполнения программного кода
+			JavaScript.
+		</li>
+	</ul>
+</section>
+
+<section class="slide objects">
+	<h2>Создание объекта</h2>
+	<p><b>Литерал объекта</b> – это заключённый в фигурные скобки список из нуля или более свойств (пар ключ: значение),
+		разделённых запятыми. Именем свойства может быть любой допустимый идентификатор, строковой литерал (допускается
+		использовать пустую строку) или число. Числовые имена свойств автоматически преобразуются в строки. Значением
+		свойства может быть значение любого типа или выражение (значением свойства в этом случае станет результат вычисления
+		выражения).</p>
+	<pre>
+		<code>var dog = {</code>
+		<code>	name: 'Mango',</code>
+		<code>	age: 2,</code>
+		<code>	isHappy: true</code>
+		<code>};</code>
+	</pre>
+	<a href="http://learn.javascript.ru/object" target="_blank">Обязательно к прочтению</a>
+	<a href="https://www.sitepoint.com/back-to-basics-javascript-object-syntax/" target="_blank">Обязательно к
+		прочтению</a>
+</section>
+
+<section class="slide loops">
+	<h2>Объекты: перебор свойств</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>for(ключ-переменная in обьект) {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>var myObject = {</code>
+				<code>	name: 'mango'</code>
+				<code>	age: 2</code>
+				<code>};</code>
+				<code>for(var key in myObject) {</code>
+				<code>	console.log(myObject[key]);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+	<a href="http://learn.javascript.ru/object-for-in" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide objects">
+	<h2>Объекты: методы</h2>
+	<ul>
+		<li>Методы обьекта это функции обьявленые внутри объекта.</li>
+		<li>Методы хранятся в свойсвах объекта как function definitions</li>
+		<li>Для доступа к полям обьекта используется имя объекта или ключевое слово <i>this</i></li>
+	</ul>
+	<pre>
+		<code>var dog = {</code>
+		<code>	name: 'Mango',</code>
+		<code>	bark: function() {</code>
+		<code>		console.log('woof!');</code>
+		<code>	},</code>
+		<code>	getName: function() {</code>
+		<code>		console.log(dog.name);</code>
+		<code>	}</code>
+		<code>};</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Code style</h2>
+	<p>Стиль кода это один из самых важных аспектов программирования. Код написаный разработчиком должен быть читабельным,
+		поддерживемым, доступным для коллег которые по уровню знаний находятся на более низкой ступени.</p>
+	<ul>
+		<li>
+			<a href="http://learn.javascript.ru/coding-style" target="_blank">Общие правила написания JavaScript кода</a>
+		</li>
+		<li>
+			<a href="https://www.codecademy.com/blog/78" target="_blank">Руководство по расстановке точек с запятыми</a>
+		</li>
+		<li>
+			<a href="https://github.com/airbnb/javascript" target="_blank">Стайл гайд от airbnb</a>
+		</li>
+		<li>
+			<a href="https://google.github.io/styleguide/jsguide.html" target="_blank">Стайл гайд от Google</a>
+		</li>
+	</ul>
+</section>
+
+<section class="slide hw">
+	<h2>Задания</h2>
+	<ul>
+		<li>Написать функцию <i>reverseString(str)</i> которая получает строку и возвращает ее зеркальную(перевернутую) версию
+			<ul>
+				<li><code>reverseString("hello");</code> возвратит "olleh"</li>
+				<li><code>reverseString("Howdy");</code> возвратит "ydwoH"</li>
+				<li><code>reverseString("Greetings from Earth");</code> возвратит "htraE morf sgniteerG"</li>
+			</ul>
+		</li>
+		<li>Написать функцию <i>findLongestWord(str)</i> которая получает строку и возвращает массив,
+			первый елемент массива это самое длинное слово в этой строке, второй елемент массива это длина этого слова.
+			<ul>
+				<li><code>findLongestWord("The quick brown fox jumped over the lazy dog");</code> вернет ['jumped', 6]</li>
+				<li><code>findLongestWord("Google do a roll");</code> вернет ['Google', 6]</li>
+				<li><code>findLongestWord("May the force be with you");</code> вернет ['force', 5]</li>
+			</ul>
+		</li>
+		<li>Написать функцию <i>factorialize(num)</i> которая получает число и возврашает факториал этого числа
+			<ul>
+				<li><code>factorialize(5);</code> вернет 120</li>
+				<li><code>factorialize(10);</code> вернет 3628800</li>
+				<li><code>factorialize(0);</code> вернет 1</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
 <div class="progress"></div>
 
 <script src="shower/shower.min.js"></script>
