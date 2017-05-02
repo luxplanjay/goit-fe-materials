@@ -112,6 +112,20 @@ h3 {
 	font-size: 20px;
 }
 
+/* $ bool */
+
+.bool p, .bool ul, .bool code {
+	font-size: 14px;
+}
+
+.bool p, .bool pre {
+	line-height: 1;
+}
+
+.bool pre {
+	margin-bottom: 10px;
+}
+
 /* $loops */
 
 .loops code {
@@ -120,6 +134,10 @@ h3 {
 
 .loops ul {
 	font-size: 16px;
+}
+
+.for code {
+	font-size: 15px;
 }
 
 /* $arrays */

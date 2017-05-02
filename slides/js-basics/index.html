@@ -19,11 +19,11 @@
 	<p><a href="http://www.ecma-international.org/publications/standards/Standard.htm" target="_blank">Cпецификация
 		JavaScript</a> – это самый главный, определяющий документ, в котором написано, как себя ведёт JavaScript. </p>
 
-	<h3>Подробная информация по JavaScript и браузерам есть в справочниках.</h3>
+	<h3>Подробная информация по JavaScript и браузерам есть в справочниках:</h3>
 	<ul>
 		<li><a href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla Developer Network</a></li>
 		<li><a href="http://devdocs.io/" target="_blank">devdocs.io</a></li>
-		<li><a href="https://developer.apple.com/safari/resources/">Safari docs</a></li>
+		<li><a href="https://developer.apple.com/safari/resources/" target="_blank">Safari docs</a></li>
 		<li><a href="http://javascript.ru/manual" target="_blank">справочник по JavaScript</a></li>
 	</ul>
 </section>
@@ -44,10 +44,10 @@
 	<section class="slide__column">
 		<h3>Редактор должен иметь в своем арсенале:</h3>
 		<ul>
-			<li>Подсветку синтаксиса.</li>
-			<li>Автодополнение.</li>
-			<li>Возможность скрыть-раскрыть блок кода.</li>
-			<li>Линтер - инструмент который проверяет код на ошибки.</li>
+			<li>подсветку синтаксиса</li>
+			<li>автодополнение</li>
+			<li>возможность скрыть-раскрыть блок кода</li>
+			<li>линтер - инструмент который проверяет код на ошибки</li>
 		</ul>
 	</section>
 </section>
@@ -65,10 +65,10 @@
 
 <section class="slide script-tag">
 	<h2>Тег script</h2>
-	<p>Для вставки скрипта в документ мы просто пишем &lt;script&gt;, без дополнительных атрибутов и комментариев</p>
+	<p>Для вставки скрипта в документ мы просто пишем &lt;script&gt;, без дополнительных атрибутов и комментариев.</p>
 	<pre>
 		<code>&lt;script&gt;</code>
-		<code>	alert('Hello, World!');</code>
+		<code>	alert('Mango says woof!');</code>
 		<code>&lt;/script&gt;</code>
 		</pre>
 </section>
@@ -340,8 +340,27 @@
 	</pre>
 </section>
 
-<section class="slide">
+<section class="slide bool">
 	<h2>Логические операторы</h2>
+	<p><b>|| (OR)</b> - вычисляет операнды слева направо до первого «истинного» и возвращает его, а если все ложные – то
+		последнее значение.</p>
+	<pre>
+		<code>var number = 20;</code>
+		<code>if(number < 5 || number > 15) {</code>
+		<code>	console.log('true');</code>
+		<code>{</code>
+	</pre>
+	<p><b>&& (AND)</b> - вычисляет операнды слева направо до первого «ложного» и возвращает его, а если все истинные – то последнее значение.</p>
+	<pre>
+		<code>var name = 'Mango', isHappy = true;</code>
+		<code>if(name === 'Mango' && isHappy) {</code>
+		<code>	console.log('woof!');</code>
+		<code>{</code>
+	</pre>
+	<p><b>! (NOT)</b> - Сначала приводит аргумент к логическому типу true/false, затем возвращает противоположное значение.</p>
+	<pre><code>console.log(!true); // false</code></pre>
+	<a href="http://learn.javascript.ru/logical-ops" target="_blank">Обязательно к прочтению (ru)</a>
+	<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators" target="_blank">Обязательно к рочтению (eng)</a>
 </section>
 
 <section class="slide loops">
@@ -396,7 +415,7 @@
 	</div>
 </section>
 
-<section class="slide loops">
+<section class="slide loops for">
 	<h2>Цикл for</h2>
 	<div class="double">
 		<div>
@@ -560,8 +579,9 @@
 		<code>	// ...</code>
 		<code>})();</code>
 	</pre>
-	<p>Такие конструкции используются для создания локальных областей видимости переменных. Глобальный namespace остается
-		'чистым' т.к. переменные обьявленые внутри IIFE не видны вне функции.</p>
+	<p>Первые скобки преобразуют код внутри себя в выражение, вторые скобки вызывают функцию которыя получается в
+		результате выражения из первых скобок. Такие конструкции используются для создания локальных областей видимости
+		переменных. Глобальный namespace остается 'чистым' т.к. переменные обьявленые внутри IIFE не видны вне функции.</p>
 	<a href="http://getinstance.info/articles/javascript/immediately-invoked-function-expressions/" target="_blank">Обязательно
 		к прочтению</a>
 </section>
@@ -678,7 +698,8 @@
 <section class="slide hw">
 	<h2>Задания</h2>
 	<ul>
-		<li>Написать функцию <i>reverseString(str)</i> которая получает строку и возвращает ее зеркальную(перевернутую) версию
+		<li>Написать функцию <i>reverseString(str)</i> которая получает строку и возвращает ее зеркальную(перевернутую)
+			версию
 			<ul>
 				<li><code>reverseString("hello");</code> возвратит "olleh"</li>
 				<li><code>reverseString("Howdy");</code> возвратит "ydwoH"</li>
@@ -700,6 +721,19 @@
 				<li><code>factorialize(0);</code> вернет 1</li>
 			</ul>
 		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Литература</h2>
+	<ul>
+		<li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
+			intro</a></li>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
+		</li>
+		<li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
+		<li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/">JavaScript Garden</a></li>
+		<li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
 	</ul>
 </section>
 
