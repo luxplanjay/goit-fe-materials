@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>JS Basics</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+<section class="slide intro">
+	<h2>Basics</span></h2>
+</section>
+
+<section class="slide docs">
+	<h2>Справочники и спецификации</h2>
+	<p><a href="http://www.ecma-international.org/publications/standards/Standard.htm" target="_blank">Cпецификация
+		JavaScript</a> – это самый главный, определяющий документ, в котором написано, как себя ведёт JavaScript. </p>
+
+	<h3>Подробная информация по JavaScript и браузерам есть в справочниках:</h3>
+	<ul>
+		<li><a href="https://developer.mozilla.org/en-US/" target="_blank">Mozilla Developer Network</a></li>
+		<li><a href="http://devdocs.io/" target="_blank">devdocs.io</a></li>
+		<li><a href="https://developer.apple.com/safari/resources/" target="_blank">Safari docs</a></li>
+		<li><a href="http://javascript.ru/manual" target="_blank">справочник по JavaScript</a></li>
+	</ul>
+</section>
+
+<section class="slide ide">
+	<h2>Редакторы кода</h2>
+	<section class="slide__column">
+		<h3>Обязательно нужен хороший редактор:</h3>
+		<ul class="double">
+			<li><a href="https://www.jetbrains.com/webstorm/" target="_blank">WebStorm</a></li>
+			<li><a href="https://www.visualstudio.com/" target="_blank">Visual Studio</a></li>
+			<li><a href="https://netbeans.org/" target="_blank">NetBeans</a></li>
+			<li><a href="https://atom.io/" target="_blank">Atom</a></li>
+			<li><a href="http://www.sublimetext.com/" target="_blank">Sublime</a></li>
+			<li><a href="http://brackets.io/" target="_blank">Brackets</a></li>
+		</ul>
+	</section>
+	<section class="slide__column">
+		<h3>Редактор должен иметь в своем арсенале:</h3>
+		<ul>
+			<li>подсветку синтаксиса</li>
+			<li>автодополнение</li>
+			<li>возможность скрыть-раскрыть блок кода</li>
+			<li>линтер - инструмент который проверяет код на ошибки</li>
+		</ul>
+	</section>
+</section>
+
+<section class="slide console">
+	<h2>Консоль разработчика</h2>
+	<p>При разработке скриптов всегда будут ошибки. Консоль показывает информацию, связанную с веб-страницей: сетевые
+		запросы, JavaScript, CSS, ошибки безопасности и предупреждения, а также сообщения об ошибках, предупреждениях и
+		сообщениях JavaScript, запущенным
+		в контексте страницы. Позволяет вам взаимодействовать с веб-страницей, выполняя выражения JavaScript в контексте
+		страницы.</p>
+
+	<a href="http://discover-devtools.codeschool.com/" target="_blank">Компактный видео курс по работе с devtools</a>
+	<a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console" target="_blank">MDN guide</a>
+</section>
+
+<section class="slide script-tag">
+	<h2>Тег script</h2>
+	<p>Для вставки скрипта в документ мы просто пишем &lt;script&gt;, без дополнительных атрибутов и комментариев.</p>
+	<pre>
+		<code>&lt;script&gt;</code>
+		<code>	alert('Mango says woof!');</code>
+		<code>&lt;/script&gt;</code>
+		</pre>
+</section>
+
+<section class="slide external-script">
+	<h2>Внешние скрипты</h2>
+	<p>JavaScript код выносят в отдельный файл, который подключается в HTML.</p>
+	<pre>
+		<code>&lt;script src="/path/to/script-1.js"&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="/path/to/script-2.js"&gt;&lt;/script&gt;</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Синхронные скрипты</h2>
+	<p>Браузер загружает и отображает HTML постепенно. Если браузер видит тег &lt;script&gt;, то он по стандарту обязан
+		сначала выполнить его, а потом показать оставшуюся часть страницы. Такое поведение называют «синхронным».</p>
+	<pre>
+		<code>&lt;p&gt;First paragraph.&lt;/p&gt;</code>
+		<code>&lt;script&gt;</code>
+		<code>	alert('Hello!');</code>
+		<code>&lt;/script&gt;</code>
+		<code>&lt;p&gt;Second paragraph.&lt;/p&gt;</code>
+	</pre>
+</section>
+
+<section class="slide async-scripts">
+	<h2>Асинхронные скрипты</h2>
+	<p>Атрибут <b>async</b> - cкрипт выполняется полностью асинхронно. <br>То есть, при обнаружении &lt;script src="..."
+		async&gt; браузер не останавливает обработку страницы, а спокойно работает дальше. Когда скрипт будет загружен – он
+		выполнится.
+	</p>
+
+	<p>Атрибут <b>defer</b> - скрипт также выполняется асинхронно, не заставляет ждать страницу, но есть два отличия от
+		async.
+	</p>
+	<pre>
+		<code>&lt;script src="script-1.js" defer&gt;&lt;/script&gt;</code>
+		<code>&lt;script src="script-2.js" defer&gt;&lt;/script&gt;</code>
+		<code>html markup</code>
+	</pre>
+	<ul>
+		<li>Браузер гарантирует, что относительный порядок скриптов с defer будет сохранён</li>
+		<li>Скрипт с defer сработает, когда весь HTML-документ будет обработан браузером</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Современный стандарт</h2>
+	<p>Чтобы перевести код в режим полного соответствия современному стандарту, нужно указать специальную директиву <b>use
+		strict</b>.</p>
+	<pre>
+		<code>'use strict';</code>
+		<code>...</code>
+		<code>...</code>
+		<code>...</code>
+	</pre>
+</section>
+
+<section class="slide vars">
+	<h2>Переменные</h2>
+	<ul>
+		<li>Переменные используются для хранения информации.</li>
+		<li>Переменная состоит из имени и выделенной области памяти, которая ему соответствует.</li>
+		<li>Для объявления переменной используется ключевое слово <strong>var</strong>:
+			<code>var message;</code>
+		</li>
+		<li>После объявления, можно записать в переменную данные:
+			<code>message = 'Hello';</code></li>
+		<li>Эти данные будут доступны при обращении по имени: <code>console.log(message);</code></li>
+	</ul>
+
+	<figure>
+		<img src="pictures/variable.png" alt="">
+		<figcaption>
+			<code>var message = "Hello!";</code>
+		</figcaption>
+	</figure>
+
+	<figure>
+		<img src="pictures/variable-change.png" alt="">
+		<figcaption>
+			<code>message = "World!";</code>
+		</figcaption>
+	</figure>
+</section>
+
+<section class="slide var-names">
+	<h2>Имена переменных</h2>
+	<ul>
+		<li>Имя может состоять из: букв, цифр, символов $ и _</li>
+		<li>Первый символ не должен быть цифрой
+			<ul>
+				<li>не верно - <code>var 123myVariable;</code></li>
+				<li>верно - <code>var myVariable123;</code></li>
+			</ul>
+		</li>
+		<li>Регистр букв имеет значение: <code>var apple;</code> и <code>var aPplE;</code> это две разные переменные</li>
+		<li>Зарезервированные имена: <code>var, class, return, export ...</code>
+		</li>
+		<li>Имя переменной должно быть понятным
+			<ul>
+				<li>плохо - <code>var yabloko, chislo, massivProductov, naborIz4;</code></li>
+				<li>хорошо - <code>var apple, num, goodsArr, list;</code></li>
+			</ul>
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/variable-names" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide data-types">
+	<h2>Типы данных</h2>
+	<ul>
+		<li>Число «number»: <code>var n = 10;</code></li>
+		<li>Строка «string»: <code>var str = "just some text";</code></li>
+		<li>Булевый тип «boolean»: <code>var status = true;</code><code>status = false;</code></li>
+		<li>Специальное значение «undefined»: <code>var age = undefined;</code></li>
+		<li>Специальное значение «null»: <code>var name = null;</code></li>
+		<li>Объекты «object»: <code>var dog = { age: 1, name: "Mango" };</code></li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Преобразование типов для примитивов</h2>
+	<h3>Три типа преобразования:</h3>
+	<ul>
+		<li>Строковое преобразование - происходит, когда требуется представление чего-либо в виде строки.</li>
+		<li>Числовое преобразование - происходит в математических функциях и выражениях, а также при сравнении данных
+			различных типов (за исключением строгих сравнений).
+		</li>
+		<li>Преобразование к логическому значению - происходит в логическом контексте, таком как <code>if(value)</code>, и
+			при применении логических операторов.
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/types-conversion" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide operators">
+	<h2>Основные операторы</h2>
+	<ul>
+		<li>Сложение: <code>var a = 2 + 2; // 4</code></li>
+		<li>Вычитание: <code>var b = 3 - 2; // 1</code></li>
+		<li>Умножение: <code>var c = 3 * 3; // 9</code></li>
+		<li>Деление: <code>var d = 4 / 2; // 2</code></li>
+		<li>Остаток от деления: <code>var e = 5 % 2; // 1</code></li>
+	</ul>
+</section>
+
+<section class="slide operators">
+	<h2>Основные операторы</h2>
+	<h3>Конкатенация (сложение строк):</h3>
+	<pre>
+		<code>var str = "I " + "love " + "Java" + "Script";</code>
+		<code>console.log(str) //I love JavaScript</code>
+	</pre>
+	<h3>Приведение строки к числу:</h3>
+	<pre>
+		<code>var a = 1, b = "2";</code>
+		<code>a + Number(b) // 3</code>
+		<code>a + +b // 3</code>
+	</pre>
+</section>
+
+<section class="slide operators">
+	<h2>Инкремент и декремент</h2>
+	<div class="double">
+		<div>
+			<h3>Инкремент(постфиксный):</h3>
+			<pre>
+				<code>var a = 2;</code>
+				<code>console.log(a++); //2</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Инкремент(префиксный):</h3>
+			<pre>
+				<code>var a = 2;</code>
+				<code>console.log(++a); //3</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Декремент(постфиксный):</h3>
+			<pre>
+				<code>var b = 5;</code>
+				<code>console.log(b--); //5</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Декремент(префиксный):</h3>
+			<pre>
+				<code>var b = 5;</code>
+				<code>console.log(--b); //4</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide comparison">
+	<h2>Операторы сравнения</h2>
+	<ul>
+		<li>Больше/меньше: <code>a > b</code>, <code>a < b</code></li>
+		<li>Больше/меньше или равно: <code>a >= b</code>, <code>a <= b</code></li>
+		<li>Равенство: <code>a == b</code></li>
+		<li>Неравенство: <code>a != b</code></li>
+		<li>Строгое равенство: <code>a === b</code></li>
+		<li>Строгое неравенство: <code>a !== b</code></li>
+	</ul>
+</section>
+
+<section class="slide boolean">
+	<h2>Логические(Булевые) значения</h2>
+	<ul>
+		<li>true – имеет смысл «да», «верно», «истина», 1</li>
+		<li>false – означает «нет», «неверно», «ложь», 0</li>
+	</ul>
+
+	<pre>
+		<code>console.log( 5 > 2 ); // true, верно</code>
+		<code>console.log( 3 == 1 ); // false, неверно</code>
+		<code>console.log( 3 != 1 ); // true, верно</code>
+		<code>console.log( 0 == false ); // true, верно</code>
+		<code>console.log( 0 === false ); // false, неверно</code>
+	</pre>
+</section>
+
+<section class="slide user-input">
+	<h2>Взаимодействие с пользователем</h2>
+	<ul>
+		<li>alert: <code>alert(text);</code></li>
+		<li>prompt: <code>var name = prompt(text, default);</code></li>
+		<li>confirm: <code>var isHuman = confirm(text);</code></li>
+	</ul>
+</section>
+
+<section class="slide if">
+	<h2>Условный оператор if</h2>
+	<p>Когда в зависимости от условия нужно выполнить различные действия, используется оператор if.</p>
+	<pre>
+		<code>var age = prompt('Введите Ваш возраст: ', '');</code>
+		<code>if (age < 18) {</code>
+		<code>	alert('младше 18');</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide else">
+	<h2>Неверное условие, else</h2>
+	<p>Необязательный блок else («иначе») выполняется, если условие неверно.</p>
+	<pre>
+		<code>var age = prompt('Введите ваш возраст: ', '');</code>
+		<code>if (age < 18) {</code>
+		<code>	alert('младше 18');</code>
+		<code>} else {</code>
+		<code>	alert('старше или ровно 18');</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide else-if">
+	<h2>Несколько условий, else if</h2>
+	<p>Если нужно проверить несколько вариантов условия используется блок else if.</p>
+	<pre>
+		<code>var age = prompt('Введите ваш возраст: ', '');</code>
+		<code>if (age < 18) {</code>
+		<code>	alert('младше 18');</code>
+		<code>} else if (age == 18) {</code>
+		<code>	alert('ровно 18');</code>
+		<code>} else {</code>
+		<code>	alert('старше 18');</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide bool">
+	<h2>Логические операторы</h2>
+	<p><b>|| (OR)</b> - вычисляет операнды слева направо до первого «истинного» и возвращает его, а если все ложные – то
+		последнее значение.</p>
+	<pre>
+		<code>var number = 20;</code>
+		<code>if(number < 5 || number > 15) {</code>
+		<code>	console.log('true');</code>
+		<code>}</code>
+	</pre>
+	<p><b>&& (AND)</b> - вычисляет операнды слева направо до первого «ложного» и возвращает его, а если все истинные – то
+		последнее значение.</p>
+	<pre>
+		<code>var name = 'Mango', isHappy = true;</code>
+		<code>if(name === 'Mango' && isHappy) {</code>
+		<code>	console.log('woof!');</code>
+		<code>}</code>
+	</pre>
+	<p><b>! (NOT)</b> - Сначала приводит аргумент к логическому типу true/false, затем возвращает противоположное
+		значение.</p>
+	<pre><code>console.log(!true); // false</code></pre>
+	<a href="http://learn.javascript.ru/logical-ops" target="_blank">Обязательно к прочтению (ru)</a>
+	<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators"
+		 target="_blank">Обязательно к рочтению (eng)</a>
+</section>
+
+<section class="slide loops">
+	<h2>Цикл while</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>while(условие) {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>var i = 0;</code>
+				<code>while(i <= 5) {</code>
+				<code>	console.log(i);</code>
+				<code>	i++;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide loops">
+	<h2>Цикл do while</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>do {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>} while(условие)</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>var i = 0;</code>
+				<code>do {</code>
+				<code>	console.log(i);</code>
+				<code>	i++;</code>
+				<code>} while(i <= 5)</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="slide loops for">
+	<h2>Цикл for</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>for(инициализация; условие; итерация) {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>for(var i = 0; i < 5; i++) {</code>
+				<code>	console.log(i);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+	<h3>Цикл выполняется так:</h3>
+	<ul>
+		<li>Инициализация - выполняется один-единственный раз, при заходе в цикл.</li>
+		<li>Условие - проверяется перед каждой итерацией и при входе в цикл, если оно нарушено, то происходит выход.</li>
+		<li>Тело - выполняется в случае удовлетворения условия.</li>
+		<li>Итерация - выполняется после тела на каждой итерации, но перед проверкой условия.</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Строки</h2>
+	<p>В JavaScript любые текстовые данные это строки.</p>
+	<p><code>var str = 'This is a string';</code></p>
+	<h3>Свойства и методы</h3>
+	<ul>
+		<li><code>str.length</code> - вернет длину строки</li>
+		<li><code>str.charAt(n)</code> - вернет строку из одного символа на позиции n</li>
+		<li><code>str.toLowerCase()</code> и <code>str.toUpperCase()</code> - вернут строку в соответствующем регистре</li>
+		<li><code>str.indexOf(val)</code> - вернет позицию на которой находится подстрока или -1, если ничего не найдено
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/string" target="_blank"> Обязательно к прочтению</a>
+</section>
+
+<section class="slide">
+	<h2>Массивы</h2>
+	<p>Массив – разновидность объекта, где в качестве ключей выбраны цифры, с дополнительными методами и свойством length.
+		<code>var arr = [1, 2, '3', '4'];</code></p>
+
+	<h3>Свойства и методы</h3>
+	<ul>
+		<li><code>arr.length</code> - вернет длину массива.</li>
+		<li><code>arr.pop()</code> - удаляет последний елемент массива и возвращает его.</li>
+		<li><code>arr.push(val)</code> - добавляет элемент в конец массива.</li>
+		<li><code>arr.shift()</code> - удаляет из массива первый элемент и возвращает его.</li>
+		<li><code>arr.unshift(val)</code> - добавляет элемент в начало массива.</li>
+	</ul>
+	<a href="http://learn.javascript.ru/array" target="_blank"> Обязательно к прочтению</a>
+</section>
+
+<section class="slide arrays">
+	<h2>Массивы: методы</h2>
+	<ul>
+		<li><b>split(val, count)</b> - - превратит строку в массив, разбив ее по разделителю val.
+			<p><code>var arr = 'hello'.split(''); console.log(arr); // ['h', 'e', 'l', 'l', 'o']</code></p>
+		</li>
+		<li><b>join(val)</b> - берет массив и склеивает его в строку, используя val как разделитель.
+			<p><code>var str = arr.join(''); console.log(str); // hello</code></p>
+		</li>
+		<li><b>splice(index[, deleteCount, elem1, ..., elemN])</b> - начиная с позиции index, удалить deleteCount элементов.
+			<p><code>arr.splice(1, 1);</code><code>console.log(arr); // ['h', 'l', 'l', 'o']</code></p>
+		</li>
+		<li><b>slice(begin, end)</b> - копирует элементы от begin, до end (не включая end)
+			<p><code>var newArr = arr.slice(1, 3); console.log(newArr); // ['l', 'l']</code></p>
+		</li>
+	</ul>
+	<a href="http://learn.javascript.ru/array-methods" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide">
+	<h2>Функции</h2>
+	<p>Функции это один из фундаментальных строительных блоков в JavaScript. Функция это JavaScript процедура - набор
+		операторов, который выполняет задачу или вычисляет значение.</p>
+	<div>
+			<pre>
+			<code>function имя функции(список параметров) {</code>
+			<code>...тело функции...</code>
+			<code>}</code>
+			<code>...</code>
+			<code>имя функции(...); //вызываем функцию по имени</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide functions">
+	<h2>Функции: область видимости переменных</h2>
+	<p>В JavaScript область видимости переменных ограничена телом функции.</p>
+	<pre>
+		<code>function showMessage() {</code>
+		<code>	var message = 'Mango says woof!'; // локальная переменная</code>
+		<code>	alert(message);</code>
+		<code>}</code>
+		<code>...</code>
+		<code>showMessage(); // 'Mango says woof!'</code>
+		<code>...</code>
+		<code>alert(message); // <-- будет ошибка, т.к. переменная видна только внутри showMessage</code>
+	</pre>
+	<a href="http://learn.javascript.ru/function-basics" target="_blank">Обязательно к прочтению</a>
+	<a href="https://docs.microsoft.com/en-us/scripting/javascript/advanced/variable-scope-javascript" target="_blank">Обязательно
+		к прочтению</a>
+</section>
+
+<section class="slide functions return">
+	<h2>Функции: возврат значения</h2>
+	<p>Функция может возвратить результат, который будет передан в вызвавший её код.</p>
+	<ul>
+		<li>Для возврата значения используется директива <i>return</i></li>
+		<li><i>return</i> может находиться в любом месте функции. Как только до <i>return</i> доходит управление – функция
+			завершается и значение передается обратно.
+		</li>
+		<li>Вызовов <i>return</i> может быть и несколько.</li>
+		<li>Директива <i>return</i> может также использоваться без значения, чтобы прекратить выполнение и выйти из функции.
+		</li>
+	</ul>
+	<pre>
+			<code>function foo(a, b) {</code>
+			<code>	return a + b;</code>
+			<code>}</code>
+			<code>console.log(foo(2, 3)); // 5</code>
+		</pre>
+	<a href="http://learn.javascript.ru/function-basics#возврат-значения" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide functions">
+	<h2>Функциональные выражения</h2>
+	<p>В JavaScript функция является значением, таким же как строка или число.</p>
+	<ul>
+		<li>Function Declaration – функция, объявленная в основном потоке кода.</li>
+		<li>Function Expression – объявление функции в контексте какого-либо выражения, например присваивания.</li>
+	</ul>
+	<pre>
+		<code>var foo = function(параметры) {</code>
+		<code>	// тело функции</code>
+		<code>};</code>
+		<code>...</code>
+		<code>foo(аргументы);</code>
+	</pre>
+
+	<a href="http://learn.javascript.ru/function-declaration-expression" target="_blank">Обязательно к прочтению</a>
+	<a href="http://learn.javascript.ru/named-function-expression" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide functions">
+	<h2>Immediately-Invoked Function Expression</h2>
+	<p>Немедленно вызываемая функция в JavaScript (IIFE) — это синтаксическая конструкция, позволяющая вызвать функцию
+		сразу же в месте ее определения.</p>
+	<pre>
+		<code>(function () {</code>
+		<code>	// ...</code>
+		<code>})();</code>
+	</pre>
+	<p>Первые скобки преобразуют код внутри себя в выражение, вторые скобки вызывают функцию которыя получается в
+		результате выражения из первых скобок. Такие конструкции используются для создания локальных областей видимости
+		переменных. Глобальный namespace
+		остается 'чистым' т.к. переменные обьявленые внутри IIFE не видны вне функции.</p>
+	<a href="http://getinstance.info/articles/javascript/immediately-invoked-function-expressions/" target="_blank">Обязательно
+		к прочтению</a>
+</section>
+
+<section class="slide">
+	<h2>Code style</h2>
+	<p>Стиль кода это один из самых важных аспектов программирования. Код написаный разработчиком должен быть читабельным,
+		поддерживемым, доступным для коллег которые по уровню знаний находятся на более низкой ступени.</p>
+	<ul>
+		<li>
+			<a href="http://learn.javascript.ru/coding-style" target="_blank">Общие правила написания JavaScript кода</a>
+		</li>
+		<li>
+			<a href="https://www.codecademy.com/blog/78" target="_blank">Руководство по расстановке точек с запятыми</a>
+		</li>
+		<li>
+			<a href="https://github.com/airbnb/javascript" target="_blank">Стайл гайд от airbnb</a>
+		</li>
+		<li>
+			<a href="https://google.github.io/styleguide/jsguide.html" target="_blank">Стайл гайд от Google</a>
+		</li>
+	</ul>
+</section>
+
+<section class="slide hw">
+	<h2>Задания</h2>
+	<ul>
+		<li>Написать функцию <i>reverseString(str)</i> которая получает строку и возвращает ее зеркальную(перевернутую)
+			версию
+			<ul>
+				<li><code>reverseString("hello");</code> возвратит "olleh"</li>
+				<li><code>reverseString("Howdy");</code> возвратит "ydwoH"</li>
+				<li><code>reverseString("Greetings from Earth");</code> возвратит "htraE morf sgniteerG"</li>
+			</ul>
+		</li>
+		<li>Написать функцию <i>findLongestWord(str)</i> которая получает строку и возвращает массив, первый елемент массива
+			это самое длинное слово в этой строке, второй елемент массива это длина этого слова.
+			<ul>
+				<li><code>findLongestWord("The quick brown fox jumped over the lazy dog");</code> вернет ['jumped', 6]</li>
+				<li><code>findLongestWord("Google do a roll");</code> вернет ['Google', 6]</li>
+				<li><code>findLongestWord("May the force be with you");</code> вернет ['force', 5]</li>
+			</ul>
+		</li>
+		<li>Написать функцию <i>factorialize(num)</i> которая получает число и возврашает факториал этого числа
+			<ul>
+				<li><code>factorialize(5);</code> вернет 120</li>
+				<li><code>factorialize(10);</code> вернет 3628800</li>
+				<li><code>factorialize(0);</code> вернет 1</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide">
+	<h2>Литература</h2>
+	<ul>
+		<li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
+			intro</a></li>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
+		</li>
+		<li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
+		<li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/" target="_blank">JavaScript Garden</a></li>
+		<li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
+	</ul>
+</section>
+
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+</body>
+
+</html>

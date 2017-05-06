@@ -25,7 +25,6 @@ h3 {
 	top: 65%;
 	font-size: 100px;
 	color: #333;
-
 }
 
 /* $ide */
@@ -142,12 +141,6 @@ h3 {
 
 /* $arrays */
 .arrays ul, .arrays code {
-	font-size: 16px;
-}
-
-/* $objects */
-
-.objects p, .objects code {
 	font-size: 16px;
 }
 
