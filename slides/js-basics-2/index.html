@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>JS Basics</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+<section class="slide intro">
+	<h2>Basics</h2>
+	<p>part 2</p>
+</section>
+
+<section class="slide objects">
+	<h2>Обьекты</h2>
+	<p><b>Обьект</b> - это неупорядоченная коллекция свойств, ассоциативный массив: структура, пригодная для хранения
+		любых данных в формате ключ-значение.</p>
+	<h3>В JavaScript есть три категории объектов:</h3>
+	<ul>
+		<li><i>Объекты базового типа</i> – это объекты, определённые в спецификации ECMAScript. Например, объекты типа
+			Array, Function, Date или RegExp являются объектами базового типа.
+		</li>
+		<li><i>Объекты среды выполнения</i> – это объекты, определённые в среде выполнения (такой как браузер). Например,
+			объекты типа HTMLElement, являются объектами среды выполнения.
+		</li>
+		<li><i>Пользовательские объекты</i> – это любой объект, созданный в результате выполнения программного кода
+			JavaScript.
+		</li>
+	</ul>
+</section>
+
+<section class="slide objects">
+	<h2>Создание объекта</h2>
+	<p><b>Литерал объекта</b> – это заключённый в фигурные скобки список из нуля или более свойств (пар ключ: значение),
+		разделённых запятыми. Именем свойства может быть любой допустимый идентификатор, строковой литерал (допускается
+		использовать пустую строку)
+		или число. Числовые имена свойств автоматически преобразуются в строки. Значением свойства может быть значение
+		любого типа или выражение (значением свойства в этом случае станет результат вычисления выражения).
+	</p>
+	<pre>
+		<code>var dog = {</code>
+		<code>	name: 'Mango',</code>
+		<code>	age: 2,</code>
+		<code>	isHappy: true</code>
+		<code>};</code>
+	</pre>
+	<ul>
+		<li><a href="http://learn.javascript.ru/object" target="_blank">Обязательно к прочтению</a></li>
+		<li><a href="https://www.sitepoint.com/back-to-basics-javascript-object-syntax/" target="_blank">Обязательно к прочтению</a></li>
+	</ul>
+</section>
+
+<section class="slide objects">
+	<h2>Объекты: перебор свойств</h2>
+	<div class="double">
+		<div>
+			<h3>Синтаксис:</h3>
+			<pre>
+				<code>for(ключ-переменная in обьект) {</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>	// код, тело цикла</code>
+				<code>}</code>
+			</pre>
+		</div>
+		<div>
+			<h3>Пример:</h3>
+			<pre>
+				<code>var dog = {</code>
+				<code>	name: 'mango'</code>
+				<code>	age: 2</code>
+				<code>};</code>
+				<code>for(var key in dog) {</code>
+				<code>	console.log('key: ', key);</code>
+				<code>	console.log('dog[key]: ', dog[key]);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</div>
+	<a href="http://learn.javascript.ru/object-for-in" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide objects">
+	<h2>Объекты: hasOwnProperty</h2>
+	<p>Метод hasOwnProperty() возвращает логическое значение, указывающее имеет ли объект к которому вы его вызываете свойство с именем аргумента. Этот метод не ищет в цепочке прототипов объекта.</p>
+	<pre>
+		<code>var dog = {</code>
+		<code>	name: 'Mango',</code>
+		<code>	age: 2</code>
+		<code>};</code>
+		<code>for(var key in dog) {</code>
+		<code>	if(dog.hasOwnProperty(key)) {</code>
+		<code>		console.log(key); // name, age</code>
+		<code>	}</code>
+		<code>}</code>
+	</pre>
+</section>
+
+<section class="slide objects">
+	<h2>Объекты: методы</h2>
+	<ul>
+		<li>Методы обьекта это функции обьявленые внутри объекта.</li>
+		<li>Методы хранятся в свойсвах объекта как function definitions</li>
+		<li>Для доступа к полям обьекта используется имя объекта или ключевое слово <i>this</i></li>
+	</ul>
+	<pre>
+		<code>var dog = {</code>
+		<code>	name: 'Mango',</code>
+		<code>	bark: function() {</code>
+		<code>		console.log('woof!');</code>
+		<code>	},</code>
+		<code>	getName: function() {</code>
+		<code>		console.log(dog.name);</code>
+		<code>	}</code>
+		<code>};</code>
+	</pre>
+</section>
+
+<section class="slide link">
+	<h2>Передача по значению и по ссылке</h2>
+	<p><b>По значению</b> - строки, числа, булевы значения, null/undefined при присваивании переменных копируются целиком
+		или, как говорят, «по значению».</p>
+	<pre>
+			<code>var a = 5;</code>
+			<code>var b = a;</code>
+			<code>console.log(b); // 5</code>
+			<code>a = 10;</code>
+			<code>console.log(b); // 5</code>
+		</pre>
+	<p><b>По ссылке</b> - переменной, которой присвоен объект, хранится не сам объект, а «адрес его места в памяти», иными
+		словами – «ссылка» на него.</p>
+	<pre>
+		<code>var obj = {name: 'Mango'};</code>
+		<code>var val = obj;</code>
+		<code>console.log(val); // {name: 'Mango'}</code>
+		<code>obj.age = 2;</code>
+		<code>console.log(val); // {name: 'Mango', age: 2}</code>
+	</pre>
+</section>
+
+<section class="slide scope">
+	<h2>Scope</h2>
+	<p>Scope в JavaScript это набор переменных, обьектов и функций которые доступны в текущий момент(в текущем контексте
+		кода). Scope JavaScript - функциональный, это значит он меняется внутри каждой функции.</p>
+	<div class="double">
+		<p>Global scope</p>
+		<pre>
+			<code>// Scope A: Global scope out here</code>
+			<code>var name = 'Todd';</code>
+			</pre>
+		<p>Local scope</p>
+		<pre>
+		<code>// Scope A: Global scope out here</code>
+			<code>var myFunction = function () {</code>
+			<code>	// Scope B: Local scope in here</code>
+			<code>};</code>
+		</pre>
+		<p>Function scope</p>
+		<pre>
+			<code>// Scope A</code>
+			<code>var myFunction = function () {</code>
+			<code>	// Scope B</code>
+			<code>	var myOtherFunction = function () {</code>
+				<code>		// Scope C</code>
+			<code>	};</code>
+			<code>};</code>
+		</pre>
+	</div>
+	<a href="https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/" target="_blank">Обязательно к прочтению</a>
+</section>
+
+<section class="slide this">
+	<h2>Ключевое слово this</h2>
+	<p>Контекст выполнения функции — это одно из фундаментальных понятий в JavaScript. </p>
+	<p>Контекстом еще часто называют значение переменной this внутри функции. this не привязывается к объекту, а зависит от контекста вызова и будет определено в момент вызова функции. При вызове функции для нее создается невидимый для нас обьект в котором хранятся все видимые этой функции переменные и их значения, this на него ссылается.</p>
+
+	<ul>
+		<li><a href="http://getinstance.info/articles/javascript/execution-context/" target="_blank">Обязательно к прочтению</a></li>
+		<li><a href="https://habrahabr.ru/post/149516/" target="_blank">Обязательно к прочтению</a></li>
+		<li><a href="https://maxello.gitbooks.io/js-note/content/07_functions_methods_inheritance/kontekst_this_v_detalyah.html" target="_blank">Обязательно к прочтению</a></li>
+	</ul>
+</section>
+
+<section class="slide chain">
+	<h2>Function chaining</h2>
+	<p>Цепочки методов, также известные как каскадирование, относятся к многократному вызову одного метода за другим на объекте в одной непрерывной строке кода. Этот метод изобилует в jQuery и других библиотеках JavaScript.</p>
+	<pre class="double">
+		<code>var dog = {</code>
+		<code>	str: '',</code>
+		<code>	addName: function() {</code>
+		<code>		this.str += 'Mango ';</code>
+		<code>		return this;</code>
+		<code>	},</code>
+		<code>	addAction: function() {</code>
+		<code>		this.str += 'says woof!';</code>
+		<code>		return this;</code>
+		<code>	},</code>
+		<code>	addSmile: function() {</code>
+		<code>		this.str += ' ^_^';</code>
+		<code>		return this;</code>
+		<code>	}</code>
+		<code>};</code>
+
+		<code>dog.addName().addAction().addSmile();</code>
+		<code>console.log(dog.str); // Mango says woof! ^_^</code>
+	</pre>
+</section>
+
+<section class="slide">
+	<h2>Литература</h2>
+	<ul>
+		<li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
+			intro</a></li>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
+		</li>
+		<li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
+		<li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/" target="_blank">JavaScript Garden</a></li>
+		<li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
+	</ul>
+</section>
+
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+</body>
+
+</html>

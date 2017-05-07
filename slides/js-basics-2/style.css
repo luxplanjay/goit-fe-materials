@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+}
+
+p, ul, a, code {
+	font-size: 16px;
+}
+
+h2 {
+	width: 100%;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+.intro {
+	position: relative;
+	background-image: url('pictures/intro.jpg');
+	background-size: cover;
+}
+
+.intro h2 {
+	position: absolute;
+	top: 65%;
+	font-size: 100px;
+	color: #333;
+}
+
+.intro p {
+	position: absolute;
+	top: 75%;
+	font-size: 45px;
+	font-weight: bold;
+	color: #333;
+}
+
+/* $objects */
+.objects p, .objects code {
+	font-size: 16px;
+}
+
+/* link */
+.link code, .link p {
+	font-size: 14px;
+}
+
+.link p, .link pre {
+	margin-bottom: 10px;
+}
+
+
+/* scope */
+.scope code, .scope ul {
+	font-size: 14px;
+}
+
+/* chain */
+.chain code {
+	font-size: 14px;
+}
