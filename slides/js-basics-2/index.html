@@ -17,6 +17,37 @@
 	<p>part 2</p>
 </section>
 
+<section class="slide scope">
+	<h2>Scope</h2>
+	<p>Scope в JavaScript это набор переменных, обьектов и функций которые доступны в текущий момент(в текущем контексте
+		кода). Scope JavaScript - функциональный, это значит он меняется внутри каждой функции.</p>
+	<div class="double">
+		<p>Global scope</p>
+		<pre>
+			<code>// Scope A: Global scope out here</code>
+			<code>var name = 'Todd';</code>
+			</pre>
+		<p>Local scope</p>
+		<pre>
+		<code>// Scope A: Global scope out here</code>
+			<code>var myFunction = function () {</code>
+			<code>	// Scope B: Local scope in here</code>
+			<code>};</code>
+		</pre>
+		<p>Function scope</p>
+		<pre>
+			<code>// Scope A</code>
+			<code>var myFunction = function () {</code>
+			<code>	// Scope B</code>
+			<code>	var myOtherFunction = function () {</code>
+				<code>		// Scope C</code>
+			<code>	};</code>
+			<code>};</code>
+		</pre>
+	</div>
+	<a href="https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/" target="_blank">Обязательно к прочтению</a>
+</section>
+
 <section class="slide objects">
 	<h2>Обьекты</h2>
 	<p><b>Обьект</b> - это неупорядоченная коллекция свойств, ассоциативный массив: структура, пригодная для хранения
@@ -143,37 +174,6 @@
 		<code>obj.age = 2;</code>
 		<code>console.log(val); // {name: 'Mango', age: 2}</code>
 	</pre>
-</section>
-
-<section class="slide scope">
-	<h2>Scope</h2>
-	<p>Scope в JavaScript это набор переменных, обьектов и функций которые доступны в текущий момент(в текущем контексте
-		кода). Scope JavaScript - функциональный, это значит он меняется внутри каждой функции.</p>
-	<div class="double">
-		<p>Global scope</p>
-		<pre>
-			<code>// Scope A: Global scope out here</code>
-			<code>var name = 'Todd';</code>
-			</pre>
-		<p>Local scope</p>
-		<pre>
-		<code>// Scope A: Global scope out here</code>
-			<code>var myFunction = function () {</code>
-			<code>	// Scope B: Local scope in here</code>
-			<code>};</code>
-		</pre>
-		<p>Function scope</p>
-		<pre>
-			<code>// Scope A</code>
-			<code>var myFunction = function () {</code>
-			<code>	// Scope B</code>
-			<code>	var myOtherFunction = function () {</code>
-				<code>		// Scope C</code>
-			<code>	};</code>
-			<code>};</code>
-		</pre>
-	</div>
-	<a href="https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/" target="_blank">Обязательно к прочтению</a>
 </section>
 
 <section class="slide this">
