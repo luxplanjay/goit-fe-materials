@@ -143,16 +143,16 @@
   <section class="slide inner-html">
     <h2>innerHTML</h2>
     <p><b>innerHTML</b> это содержимое елемента в виде строки. Код <code>el.innerHTML += '&lt;p&gt;Hello
-		World!&lt;\p&gt;';</code> говорит браузеру пройтись по строке(распарсить ее), проверить на наличие тегов, если нашел таковые то создать DOM елементы и вставить их в правильном порядке.</p>
+		World!&lt;/p&gt;';</code> говорит браузеру пройтись по строке(распарсить ее), проверить на наличие тегов, если нашел таковые то создать DOM елементы и вставить их в правильном порядке.</p>
     <p><b>ВАЖНО:</b> изменение innerHTML полностью удалит и пересоздаст всех потомков контейнера. Все обработчики событий которые были связаны с елементами будут потеряны и будет необходимо их "присоединить" по новой, если в этом есть необходимость.
     </p>
 
     <pre>
 		<code>var el = document.querySelector('div');</code>
 		<code>//операция</code>
-		<code>el.innerHTML += '&lt;p&gt;Hello World!&lt;\p&gt;';</code>
+		<code>el.innerHTML += '&lt;p&gt;Hello World!&lt;/p&gt;';</code>
 		<code>// это тоже самое что и</code>
-		<code>el.innerHTML = el.innerHTML + '&lt;p&gt;Hello World!&lt;\p&gt;';</code>
+		<code>el.innerHTML = el.innerHTML + '&lt;p&gt;Hello World!&lt;/p&gt;';</code>
 		<code>//содержимое el будет сначала удалено, а потом перезаписано по новой</code>
 	</pre>
 
