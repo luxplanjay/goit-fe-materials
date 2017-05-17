@@ -1,75 +1,73 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 p, ul, a, code {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 h2 {
-	width: 100%;
+  width: 100%;
 }
 
 h3 {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 .intro {
-	position: relative;
-	background-image: url('pictures/intro.jpg');
-	background-size: cover;
+  position: relative;
+  background-image: url('pictures/intro.jpg');
+  background-size: cover;
 }
 
 .intro h2 {
-	position: absolute;
-	top: 65%;
-	font-size: 100px;
-	width: 50%;
-	color: #333;
+  position: absolute;
+  top: 65%;
+  font-size: 100px;
+  width: 50%;
+  color: #333;
 }
 
 .dom img {
-	display: block;
-	width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .webpage li p {
-	font-size: 10px;
-	text-indent: 20px;
+  font-size: 10px;
+  text-indent: 20px;
 }
 
 .selectors img {
-	display: block;
-	width: 95%;
-	height: auto;
-	margin: 0 auto;
+  display: block;
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
 }
 
 .inner-html p, .inner-html code {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .frag code {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .tests img {
-	display: block;
-	width: 95%;
+  display: block;
+  width: 95%;
 }
 
 .reflow-repaint p, .reflow-repaint li {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .reflow-repaint .reasons {
-	display: inline-block;
-	width: 70%;
-	vertical-align: middle;
+  display: inline-block;
+  width: 70%;
+  vertical-align: middle;
 }
 
 .reflow-repaint .links {
-	display: inline-block;
+  display: inline-block;
 }
-
-

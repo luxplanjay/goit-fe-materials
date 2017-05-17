@@ -2,201 +2,169 @@
 <html lang="en">
 
 <head>
-	<title>DOM</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
-	<link rel="stylesheet" href="style.css">
+  <title>DOM</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="shower list">
 
-<section class="slide intro">
-	<h2>Document Object Model</h2>
-</section>
+  <section class="slide intro">
+    <h2>Document Object Model</h2>
+  </section>
 
-<section class="slide scope">
-	<h2>Document Object Model</h2>
-	<p>DOM(Объектная Модель Документа) - это программный интерфейс (API) для HTML и XML документов. DOM содержит
-		структурированное представление документа и определяет то, как эта структура может быть доступна из программ,
-		которые могут изменять содержимое, стиль и структуру документа. Представление DOM состоит из структурированной
-		группы узлов и объектов, которые имееют свойства и методы. По существу DOM соединяет веб-страницу с языками описания
-		сценариев либо языками программирования.</p>
+  <section class="slide scope">
+    <h2>Document Object Model</h2>
+    <p>DOM(Объектная Модель Документа) - это программный интерфейс (API) для HTML и XML документов. DOM содержит структурированное представление документа и определяет то, как эта структура может быть доступна из программ, которые могут изменять содержимое,
+      стиль и структуру документа. Представление DOM состоит из структурированной группы узлов и объектов, которые имееют свойства и методы. По существу DOM соединяет веб-страницу с языками описания сценариев либо языками программирования.</p>
 
-	<p>Все свойства, методы и события, доступные для управления и создания новых страниц, организованы в виде объектов.
-		(например, объект document, который представляет сам документ, объект table, который реализует специальный интерфейс
-		DOM HTMLTableElement, необходимый для доступа к HTML-таблицам, и так далее)</p>
-</section>
+    <p>Все свойства, методы и события, доступные для управления и создания новых страниц, организованы в виде объектов. (например, объект document, который представляет сам документ, объект table, который реализует специальный интерфейс DOM HTMLTableElement,
+      необходимый для доступа к HTML-таблицам, и так далее)</p>
+  </section>
 
-<section class="slide">
-	<h2>DOM и JavaScript</h2>
-	<p>В начале, JavaScript и DOM были тесно связанны, но в последствии они развились в различные сущности. Содержимое
-		страницы хранится в DOM и может быть доступно и изменяться с использованием JavaScript.</p>
+  <section class="slide">
+    <h2>DOM и JavaScript</h2>
+    <p>В начале, JavaScript и DOM были тесно связанны, но в последствии они развились в различные сущности. Содержимое страницы хранится в DOM и может быть доступно и изменяться с использованием JavaScript.</p>
 
-	<p><b>DOM не является языком программирования</b>, но без него JavaScript не имел бы никакой модели или представления
-		о веб-странице, HTML-документе, XML-документе и их элементах. Каждый элемент в документе - весь документ в целом,
-		заголовок, таблицы внутри документа, заголовки таблицы, текст внутри ячеек таблицы - это части DOM для этого
-		документа, поэтому все они доступны и могут изменяться с помощью DOM и скриптового языка наподобие JavaScript.</p>
-</section>
+    <p><b>DOM не является языком программирования</b>, но без него JavaScript не имел бы никакой модели или представления о веб-странице, HTML-документе, XML-документе и их элементах. Каждый элемент в документе - весь документ в целом, заголовок, таблицы
+      внутри документа, заголовки таблицы, текст внутри ячеек таблицы - это части DOM для этого документа, поэтому все они доступны и могут изменяться с помощью DOM и скриптового языка наподобие JavaScript.</p>
+  </section>
 
-<section class="slide">
-	<h2>Каким образом доступен DOM?</h2>
-	<p>Вы не должны делать ничего особенного для работы с DOM. Различные браузеры имеют различную реализацию DOM, эти
-		реализации показывают различную степень соответсвия с действительным стандартом DOM (это тема, которую мы пытались
-		не затрагивать в данной документации), но каждый браузер использует свой DOM, чтобы сделать веб страницы доступными
-		для взаимодествия с языками сценариев.</p>
+  <section class="slide">
+    <h2>Каким образом доступен DOM?</h2>
+    <p>Вы не должны делать ничего особенного для работы с DOM. Различные браузеры имеют различную реализацию DOM, эти реализации показывают различную степень соответсвия с действительным стандартом DOM, но каждый браузер использует свой DOM, чтобы сделать веб страницы доступными для взаимодествия с языками сценариев.</p>
 
-	<p>При создании сценария с использованием элемента &lt;script&gt; либо включая в веб страницу инструкцию для загрузки
-		скрипта вы можете немедленно приступить к использованию программного интерфейса (API), используя элементы document
-		или window для взаимодействия с самим документом, либо для получения потомков этого документа, т.е. различных
-		элементов на странице.</p>
-</section>
+    <p>При создании сценария с использованием элемента &lt;script&gt; либо включая в веб страницу инструкцию для загрузки скрипта вы можете немедленно приступить к использованию программного интерфейса (API), используя элементы document или window для взаимодействия
+      с самим документом, либо для получения потомков этого документа, т.е. различных элементов на странице.</p>
+  </section>
 
-<section class="slide dom">
-	<h2>Ближе к реальности</h2>
-	<p>Согласно DOM-модели, документ является иерархией. Каждый HTML-тег образует отдельный элемент-узел, каждый фрагмент
-		текста - текстовый элемент. Проще говоря, DOM - это представление документа в виде дерева тегов. Это дерево
-		образуется за счет вложенной структуры тегов плюс текстовые фрагменты страницы, каждый из которых образует отдельный
-		узел. Каждый DOM-элемент является объектом и предоставляет свойства для манипуляции своим содержимым, для доступа к
-		родителям и потомкам.</p>
-	<div class="double">
-		<img src="pictures/dom-hierarchy.jpg" alt="dom иерархия">
-		<ul>
-			<li><a href="https://learn.javascript.ru/dom-nodes" target="_blank">Обязательно к прочтению</a></li>
-			<li><a href="http://javascript.ru/tutorial/dom/intro" target="_blank">Обязательно к прочтению</a></li>
-		</ul>
-	</div>
-</section>
+  <section class="slide dom">
+    <h2>Ближе к реальности</h2>
+    <p>Согласно DOM-модели, документ является иерархией. Каждый HTML-тег образует отдельный элемент-узел, каждый фрагмент текста - текстовый элемент. Проще говоря, DOM - это представление документа в виде дерева тегов. Это дерево образуется за счет вложенной
+      структуры тегов плюс текстовые фрагменты страницы, каждый из которых образует отдельный узел. Каждый DOM-элемент является объектом и предоставляет свойства для манипуляции своим содержимым, для доступа к родителям и потомкам.</p>
+    <div class="double">
+      <img src="pictures/dom-hierarchy.jpg" alt="dom иерархия">
+      <ul>
+        <li><a href="https://learn.javascript.ru/dom-nodes" target="_blank">Обязательно к прочтению</a></li>
+        <li><a href="http://javascript.ru/tutorial/dom/intro" target="_blank">Обязательно к прочтению</a></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="slide webpage">
-	<h2>WEB-страница и браузер</h2>
-	<h3>Последовательность работы браузера при отображении документа:</h3>
-	<ul>
-		<li>Из полученного от сервера HTML-документа формируется DOM (Document Object Model)</li>
-		<li>Загружаются и распознаются стили, формируется CSSOM (CSS Object Model)</li>
-		<li>На основе DOM и CSSOM формируется дерево рендеринга, или render tree — набор объектов рендеринга. <p>(Webkit использует термин «renderer», или «render object», а Gecko — «frame»). Render tree дублирует структуру DOM, но сюда не попадают невидимые элементы (например — &lt;head&gt;, или элементы со стилем display:none;). Также, каждая строка текста представлена в дереве рендеринга как отдельный renderer. Каждый объект рендеринга содержит соответствующий ему объект DOM (или блок текста), и рассчитанный для этого объекта стиль. Проще говоря, render tree описывает визуальное представление DOM.</p></li>
-		<li>Для каждого элемента render tree рассчитывается положение на странице — происходит layout. Браузеры используют
-			поточный метод (flow), при котором в большинстве случаев достаточно одного прохода для размещения всех элементов
-			(для таблиц проходов требуется больше).
-		</li>
-		<li>Наконец, происходит отрисовка всего этого добра в браузере — painting.</li>
-	</ul>
-</section>
+  <section class="slide webpage">
+    <h2>WEB-страница и браузер</h2>
+    <h3>Последовательность работы браузера при отображении документа:</h3>
+    <ul>
+      <li>Из полученного от сервера HTML-документа формируется DOM (Document Object Model)</li>
+      <li>Загружаются и распознаются стили, формируется CSSOM (CSS Object Model)</li>
+      <li>На основе DOM и CSSOM формируется дерево рендеринга, или render tree — набор объектов рендеринга.
+        <p>(Webkit использует термин «renderer», или «render object», а Gecko — «frame»). Render tree дублирует структуру DOM, но сюда не попадают невидимые элементы (например — &lt;head&gt;, или элементы со стилем display:none;). Также, каждая строка текста
+          представлена в дереве рендеринга как отдельный renderer. Каждый объект рендеринга содержит соответствующий ему объект DOM (или блок текста), и рассчитанный для этого объекта стиль. Проще говоря, render tree описывает визуальное представление
+          DOM.</p>
+      </li>
+      <li>Для каждого элемента render tree рассчитывается положение на странице — происходит layout. Браузеры используют поточный метод (flow), при котором в большинстве случаев достаточно одного прохода для размещения всех элементов (для таблиц проходов
+        требуется больше).
+      </li>
+      <li>Наконец, происходит отрисовка всего этого добра в браузере — painting.</li>
+    </ul>
+  </section>
 
-<section class="slide reflow-repaint">
-	<h2>Repaint и Reflow</h2>
-	<p><i><b>Repaint</b></i> - происходит когда изменения произоишли в стилях елемента влияющих на внешний вид, но не на
-		расположение страницы. К примеру, opacity, background-color, visibility и outline. Браузер просто отрисовывает его
-		заново, с учётом нового стиля — происходит repaint. Repaint это дорогая операция потому что браузеру необходимо
-		проверить видимость всех остальных узлов в дереве, один или более могут оказаться невидимыми под изменившим внешний
-		вид узлом.</p>
+  <section class="slide reflow-repaint">
+    <h2>Repaint и Reflow</h2>
+    <p><i><b>Repaint</b></i> - происходит когда изменения произоишли в стилях елемента влияющих на внешний вид, но не на расположение страницы. К примеру, opacity, background-color, visibility и outline. Браузер просто отрисовывает его заново, с учётом нового
+      стиля — происходит repaint. Repaint это дорогая операция потому что браузеру необходимо проверить видимость всех остальных узлов в дереве, один или более могут оказаться невидимыми под изменившим внешний вид узлом.</p>
 
-	<p><i><b>Reflow</b></i> - происходит когда изменения затрагивают содержимое, структуру документа, положение элементов.
-		Идет пересчет позиционирования и размеров всех елементов, что ведет к перерисовке части или всего документа.
-		Изменения размера одного родительского контейнера повлияет на всех его детей и предков. Имеет значительно большее
-		влияние на производительность</p>
+    <p><i><b>Reflow</b></i> - происходит когда изменения затрагивают содержимое, структуру документа, положение элементов. Идет пересчет позиционирования и размеров всех елементов, что ведет к перерисовке части или всего документа. Изменения размера одного
+      родительского контейнера повлияет на всех его детей и предков. Имеет значительно большее влияние на производительность</p>
 
-	<p>Обе операции блокируют браузер. Ни пользователь ни ваша страница не могут выполнять никакие другие операции в то
-		время когда проиходит repaint и reflow. Причинами таких изменений обычно являются:</p>
-	<ul class="reasons">
-		<li>Манипуляции с DOM (добавление, удаление, изменение, перестановка элементов)</li>
-		<li>Изменение содержимого, в т.ч. текста в полях форм</li>
-		<li>Расчёт или изменение CSS-свойств</li>
-		<li>Добавление, удаление таблиц стилей</li>
-		<li>Манипуляции с атрибутом «class»</li>
-		<li>Манипуляции с окном браузера — изменения размеров, прокрутка</li>
-		<li>Активация псевдо-классов (например :hover)</li>
-	</ul>
-	<ul class="links">
-		<li><a href="https://www.sitepoint.com/10-ways-minimize-reflows-improve-performance/" target="_blank">Доп
+    <p>Обе операции блокируют браузер. Ни пользователь ни ваша страница не могут выполнять никакие другие операции в то время когда проиходит repaint и reflow. Причинами таких изменений обычно являются:</p>
+    <ul class="reasons">
+      <li>Манипуляции с DOM (добавление, удаление, изменение, перестановка элементов)</li>
+      <li>Изменение содержимого, в т.ч. текста в полях форм</li>
+      <li>Расчёт или изменение CSS-свойств</li>
+      <li>Добавление, удаление таблиц стилей</li>
+      <li>Манипуляции с атрибутом «class»</li>
+      <li>Манипуляции с окном браузера — изменения размеров, прокрутка</li>
+      <li>Активация псевдо-классов (например :hover)</li>
+    </ul>
+    <ul class="links">
+      <li><a href="https://www.sitepoint.com/10-ways-minimize-reflows-improve-performance/" target="_blank">Доп
 			материалы</a></li>
-		<li><a
-			href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing"
-			target="_blank">Доп материалы</a></li>
-		<li><a href="https://developers.google.com/speed/articles/reflow" target="_blank">Доп материалы</a></li>
-	</ul>
-</section>
+      <li><a href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing" target="_blank">Доп материалы</a></li>
+      <li><a href="https://developers.google.com/speed/articles/reflow" target="_blank">Доп материалы</a></li>
+    </ul>
+  </section>
 
-<section class="slide">
-	<h2>DOMContentLoaded</h2>
-	<h3>Процесс загрузки HTML-документа, условно, состоит из трёх стадий</h3>
-	<ul>
-		<li><code>DOMContentLoaded</code> – браузер полностью загрузил HTML, и построил DOM-дерево. Событие DOMContentLoaded
-			происходит в момент когда HTML документ загрузился, не дожидаясь загрузки таблиц стилей, картинок итд.
-		</li>
-		<li><code>load</code> – браузер загрузил все ресурсы. Очень часто делают ошибку используя ивент load вместо
-			DOMContentLoaded.
-		</li>
-		<li><code>beforeunload/unload</code> – уход со страницы.</li>
-	</ul>
-	<pre>
+  <section class="slide">
+    <h2>DOMContentLoaded</h2>
+    <h3>Процесс загрузки HTML-документа, условно, состоит из трёх стадий</h3>
+    <ul>
+      <li><code>DOMContentLoaded</code> – браузер полностью загрузил HTML, и построил DOM-дерево. Событие DOMContentLoaded происходит в момент когда HTML документ загрузился, не дожидаясь загрузки таблиц стилей, картинок итд.
+      </li>
+      <li><code>load</code> – браузер загрузил все ресурсы. Очень часто делают ошибку используя ивент load вместо DOMContentLoaded.
+      </li>
+      <li><code>beforeunload/unload</code> – уход со страницы.</li>
+    </ul>
+    <pre>
 		<code>document.addEventListener('DOMContentLoaded', function(event) {</code>
 		<code>	console.log('DOM fully loaded and parsed');</code>
     <code>});</code>
 	</pre>
-	<a href="https://learn.javascript.ru/onload-ondomcontentloaded" target="_blank">Обязательно к прочтению</a>
-</section>
+    <a href="https://learn.javascript.ru/onload-ondomcontentloaded" target="_blank">Обязательно к прочтению</a>
+  </section>
 
-<section class="slide selectors">
-	<h2>Оптимизация поиска елементов</h2>
-	<p>Методы getElementById и getElementsByClassName очень специфичны, в то время как querySelector и querySelectorAll
-		это методы более широкого спектра поиска. Логично что метод с более узкой специфичностью поиска елементов будет
-		работать быстрее.</p>
-	<p>К тому же необходимо проверять уровень поддержки методов в разных браузерах. Чем новее метод, тем, скорее всего,
-		хуже поддержка и быстродействие.</p>
+  <section class="slide selectors">
+    <h2>Оптимизация поиска елементов</h2>
+    <p>Методы getElementById и getElementsByClassName очень специфичны, в то время как querySelector и querySelectorAll это методы более широкого спектра поиска. Логично что метод с более узкой специфичностью поиска елементов будет работать быстрее.</p>
+    <p>К тому же необходимо проверять уровень поддержки методов в разных браузерах. Чем новее метод, тем, скорее всего, хуже поддержка и быстродействие.</p>
 
-	<img src="pictures/selector-opt.jpg" alt="selector speed difference">
+    <img src="pictures/selector-opt.jpg" alt="selector speed difference">
 
-	<a href="https://jsperf.com/getelementbyid-vs-queryselector" target="_blank">ссылка на тест</a>
+    <a href="https://jsperf.com/getelementbyid-vs-queryselector" target="_blank">ссылка на тест</a>
 
-</section>
+  </section>
 
-<section class="slide">
-	<h2>Вставка елементов в DOM</h2>
-	<h3>Есть 3 основных метода вставки елементов в DOM дерево</h3>
-	<ul>
-		<li><code>innerHTML</code> - с помощью этого метода можно присвоить содержимому елемента строчный контент, в том
-			числе и набор тегов которые браузер сам превратит в теги.
-		</li>
-		<li><code>appendChild\insertBefore</code> - нативные методы работы с DOM деревом, имеют наилучшую поддержку и ряд
-			плюсов. Работают с DOM елементами.
-		</li>
-		<li><code>DocumentFragment</code> - фрагмент документа, чаще всего используется для всавки больших однотипных
-			конструкиций, к примеру лента новостей в социальной сети или список продуктов в интернет магазине.
-		</li>
-	</ul>
-</section>
+  <section class="slide">
+    <h2>Вставка елементов в DOM</h2>
+    <h3>Есть 3 основных метода вставки елементов в DOM дерево</h3>
+    <ul>
+      <li><code>innerHTML</code> - с помощью этого метода можно присвоить содержимому елемента строчный контент, в том числе и набор тегов которые браузер сам превратит в теги.
+      </li>
+      <li><code>appendChild\insertBefore</code> - нативные методы работы с DOM деревом, имеют наилучшую поддержку и ряд плюсов. Работают с DOM елементами.
+      </li>
+      <li><code>DocumentFragment</code> - фрагмент документа, чаще всего используется для всавки больших однотипных конструкиций, к примеру лента новостей в социальной сети или список продуктов в интернет магазине.
+      </li>
+    </ul>
+  </section>
 
-<section class="slide inner-html">
-	<h2>innerHTML</h2>
-	<p><b>innerHTML</b> это содержимое елемента в виде строки. Код <code>el.innerHTML += '&lt;p&gt;Hello
-		World!&lt;p&gt;';</code> говорит браузеру пройтись по строке(распарсить ее), проверить на наличие тегов, если нашел
-		таковые то создать DOM елементы и вставить их в правильном порядке.</p>
-	<p><b>ВАЖНО:</b> изменение innerHTML полностью удалит и пересоздаст всех потомков контейнера. Все обработчики событий
-		которые были связаны с елементами будут потеряны и будет необходимо их "присоединить" по новой, если в этом есть
-		необходимость.</p>
+  <section class="slide inner-html">
+    <h2>innerHTML</h2>
+    <p><b>innerHTML</b> это содержимое елемента в виде строки. Код <code>el.innerHTML += '&lt;p&gt;Hello
+		World!&lt;\p&gt;';</code> говорит браузеру пройтись по строке(распарсить ее), проверить на наличие тегов, если нашел таковые то создать DOM елементы и вставить их в правильном порядке.</p>
+    <p><b>ВАЖНО:</b> изменение innerHTML полностью удалит и пересоздаст всех потомков контейнера. Все обработчики событий которые были связаны с елементами будут потеряны и будет необходимо их "присоединить" по новой, если в этом есть необходимость.
+    </p>
 
-	<pre>
+    <pre>
 		<code>var el = document.querySelector('div');</code>
 		<code>//операция</code>
-		<code>el.innerHTML += '&lt;p&gt;Hello World!&lt;p&gt;';</code>
+		<code>el.innerHTML += '&lt;p&gt;Hello World!&lt;\p&gt;';</code>
 		<code>// это тоже самое что и</code>
-		<code>el.innerHTML = el.innerHTML + '&lt;p&gt;Hello World!&lt;p&gt;';</code>
+		<code>el.innerHTML = el.innerHTML + '&lt;p&gt;Hello World!&lt;\p&gt;';</code>
 		<code>//содержимое el будет сначала удалено, а потом перезаписано по новой</code>
 	</pre>
 
-	<a href="http://devdocs.io/dom/element/innerhtml" target="_blank">Обязательно к прочтению</a>
-</section>
+    <a href="http://devdocs.io/dom/element/innerhtml" target="_blank">Обязательно к прочтению</a>
+  </section>
 
-<section class="slide">
-	<h2>appendChild\insertBefore</h2>
-	<p><code>appendChild()\insertBefore()</code> добавляют узел в конец\начало\произвольное место детей родителя. Если
-		елемент для вставки это существующий узел, то он изымается из своего старого места и ставится на новое. Отсюда
-		вытекает правило - один и тот же узел не может быть одновременно в двух местах. Чтобы сделать копию узла можно
-		использовать <code>cloneNode()</code> перед тем как вставить эту копию.</p>
+  <section class="slide">
+    <h2>appendChild\insertBefore</h2>
+    <p><code>appendChild()\insertBefore()</code> добавляют узел в конец\начало\произвольное место детей родителя. Если елемент для вставки это существующий узел, то он изымается из своего старого места и ставится на новое. Отсюда вытекает правило - один
+      и тот же узел не может быть одновременно в двух местах. Чтобы сделать копию узла можно использовать <code>cloneNode()</code> перед тем как вставить эту копию.</p>
 
-	<pre>
+    <pre>
 		<code>var el = document.querySelector('div');</code>
 		<code>var newEl = document.createElement('p');</code>
 		<code>newEl.appendChild(document.createTextNode('Hello World!'));</code>
@@ -204,18 +172,14 @@
 		<code>// или</code>
 		<code>el.insertBefore(newEl, el.childNodes[0]);</code>
 	</pre>
-</section>
+  </section>
 
-<section class="slide frag">
-	<h2>DocumentFragment</h2>
-	<p><i>DocumentFragment</i> представляет собой минимальный обьект документа у которого нету родителя. Он используется
-		как
-		легкая версия документа для того чтобы хранить сегмент структуры документа состоящий из набора узлов, как и
-		стандартный документ. Ключевое различие в том, что DocumentFragment это не часть DOM структуры, поэтому все
-		изменения внутри него не влияют на
-		страницу, не вызывают пересчет стилей и размеров.</p>
+  <section class="slide frag">
+    <h2>DocumentFragment</h2>
+    <p><i>DocumentFragment</i> представляет собой минимальный обьект документа у которого нету родителя. Он используется как легкая версия документа для того чтобы хранить сегмент структуры документа состоящий из набора узлов, как и стандартный документ.
+      Ключевое различие в том, что DocumentFragment это не часть DOM структуры, поэтому все изменения внутри него не влияют на страницу, не вызывают пересчет стилей и размеров.</p>
 
-	<pre>
+    <pre>
 		<code>var frag = document.createDocumentFragment();</code>
 		<code>for (var i = 0; i < 10000; i++) {</code>
 		<code>	var el = document.createElement('div);</code>
@@ -224,39 +188,39 @@
 		<code>document.body.appendChild(frag);</code>
 	</pre>
 
-	<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment" target="_blank">Обязательно
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment" target="_blank">Обязательно
 		к прочтению</a>
-</section>
+  </section>
 
-<section class="slide tests">
-	<h2>Тесты</h2>
-	<ul>
-		<li><a href="https://jsperf.com/javascript-textnode-appendchild-vs-innerhtml" target="_blank">innerHTML vs
+  <section class="slide tests">
+    <h2>Тесты</h2>
+    <ul>
+      <li><a href="https://jsperf.com/javascript-textnode-appendchild-vs-innerhtml" target="_blank">innerHTML vs
 			textNode</a></li>
-		<li><a href="https://jsperf.com/document-fragment-vs-innerhtml-vs-looped-appendchild" target="_blank">innerHTML vs
+      <li><a href="https://jsperf.com/document-fragment-vs-innerhtml-vs-looped-appendchild" target="_blank">innerHTML vs
 			looped appendChild vs Document fragment</a></li>
-		<li><a href="https://jsperf.com/innerhtml-appendchild-jqappend" target="_blank">innerHTML vs. appendChild vs
+      <li><a href="https://jsperf.com/innerhtml-appendchild-jqappend" target="_blank">innerHTML vs. appendChild vs
 			jQuery.append()</a></li>
-	</ul>
+    </ul>
 
-</section>
+  </section>
 
-<section class="slide">
-	<h2>Литература</h2>
-	<ul>
-		<li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
+  <section class="slide">
+    <h2>Литература</h2>
+    <ul>
+      <li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
 			intro</a></li>
-		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
-		</li>
-		<li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
-		<li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/" target="_blank">JavaScript Garden</a></li>
-		<li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
-	</ul>
-</section>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
+      </li>
+      <li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
+      <li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/" target="_blank">JavaScript Garden</a></li>
+      <li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
+    </ul>
+  </section>
 
-<div class="progress"></div>
+  <div class="progress"></div>
 
-<script src="shower/shower.min.js"></script>
+  <script src="shower/shower.min.js"></script>
 </body>
 
 </html>
