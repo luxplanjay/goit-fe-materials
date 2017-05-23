@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Constructors</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+  <section class="slide intro">
+    <h2>Constructor functions</h2>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Конструктор и оператор new</h2>
+    <p>Обычный синтаксис {...} позволяет создать один объект. Но зачастую нужно создать много однотипных объектов. Для этого используют «функции-конструкторы», запуская их при помощи специального оператора <i>new</i>. Конструктором становится любая функция,
+      вызванная через <i>new</i>. Чтобы выделить функции, задуманные как конструкторы, их называют с большой буквы.</p>
+
+    <pre>
+      <code>var Human = function(name, age, gender) { </code>
+        <code>  this.name = name;</code>
+        <code>  this.age = age;</code>
+        <code>  this.gender = gender;</code>
+        <code>};</code>
+        <code> </code>
+        <code>var person1 = new Human('Singu', '25', 'male');</code>
+        <code>var person2 = new Human('Chelsey', '35', 'female');</code>
+        <code> </code>
+        <code>console.log(person1); // Human {name: "Singu", age: "25", gender: "male"}</code>
+        <code>console.log(person2); // Human {name: "Chelsey", age: "35", gender: "female"}</code>
+    </pre>
+
+  </section>
+
+  <section class="slide">
+    <h2>Принцип работы</h2>
+
+    <p>Функция, запущенная через new, делает следующее:
+      <ul>
+        <li>Создаётся новый пустой объект.</li>
+        <li>Ключевое слово this получает ссылку на этот объект.</li>
+        <li>Функция выполняется в контексте обьекта на который ссылается this. Как правило, она модифицирует this, добавляет методы, свойства.</li>
+        <li>Возвращается this.</li>
+      </ul>
+    </p>
+
+    <pre>
+      <code>var Human = function(name, age, gender) { </code>
+        <code>  // this = {}; &lt;-- то, что делает интерпретатор</code>
+        <code>  this.name = name;</code>
+        <code>  this.age = age;</code>
+        <code>  this.gender = gender;</code>
+        <code> // return this; &lt;-- то, что делает интерпретатор</code>
+        <code>};</code>
+    </pre>
+
+  </section>
+
+  <section class="slide text-small">
+    <h2>return в конструкторе</h2>
+    <p>Как правило, конструкторы ничего не возвращают. Их задача – записать всё, что нужно, в this, который автоматически станет результатом. Но если явный вызов return всё же есть, то применяется простое правило:</p>
+    <ul>
+      <li>При вызове return с объектом, будет возвращён он, а не this.</li>
+      <li>При вызове return с примитивным значением, оно будет отброшено.</li>
+      <li>Иными словами, вызов return с объектом вернёт объект, а с чем угодно, кроме объекта – возвратит, как обычно, this.</li>
+    </ul>
+
+    <div class="double">
+      <pre>
+    <code>var Human = function(name, age) { </code>
+      <code>  this.name = name;</code>
+      <code>  this.age = age;</code>
+      <code>  return {name: 'Вася', age: 999};</code>
+      <code>};</code>
+      <code> </code>
+      <code>console.log(new Human('Коля', 20));</code>
+      <code>// Object {name: "Вася", age: 999}</code>
+  </pre>
+      <pre>
+    <code>var Human = function(name, age) { </code>
+      <code>  this.name = name;</code>
+      <code>  this.age = age;</code>
+      <code>  return 'Amazing string!';</code>
+      <code>};</code>
+      <code> </code>
+      <code>console.log(new Human('Коля', 20));</code>
+      <code>// Human {name: "Коля", age: 20}</code>
+  </pre>
+    </div>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Методы в конструкторе</h2>
+    <p>Использование функций для создания объекта дает большую гибкость. Можно передавать конструктору параметры, определяющие как его создавать, и он будет возвращать объекты заданным образом.</p>
+    <pre>
+      <code>var Human = function(name, age, gender) { </code>
+        <code>  this.name = name;</code>
+        <code>  this.age = age;</code>
+        <code>  this.gender = gender;</code>
+        <code> </code>
+        <code>  this.getName = function() {</code>
+        <code>    console.log('This persons name is ' + this.name);</code>
+        <code>  };</code>
+        <code>};</code>
+        <code> </code>
+        <code>var person = new Human('Singu', 20);</code>
+        <code>person.getName(); // This persons name is Singu</code>
+    </pre>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Локальные переменные и функции</h2>
+
+    <p>В функции-конструкторе удобно объявить вспомогательные локальные переменные и вложенные функции, которые будут видны только внутри. Так удобно создавать сложные обьтекты, поля которых содержат результат каких-то операций.</p>
+    <p>Те функции и данные, которые должны быть доступны для внешнего кода, мы пишем в this – и к ним можно будет обращаться, как например person.getName(), а вспомогательные, которые нужны только внутри самого объекта, сохраняем в локальной области видимости.</p>
+
+    <pre class="double">
+      <code>var Human = function(name, age, gender) { </code>
+        <code>  var message = 'This persons info is: ';</code>
+        <code>  var addString = function() {</code>
+        <code>    return message + ' ' + name + ' ' + age + ' ' + gender;</code>
+        <code>  };</code>
+        <code> </code>
+        <code>  this.getFullInfo = function() {</code>
+        <code>    console.log(addString());</code>
+        <code>  };</code>
+        <code>};</code>
+        <code> </code>
+        <code>var person = new Human('Singu', 20, 'male');</code>
+        <code>person.getFullInfo();</code>
+        <code>// This persons info is:  Singu 20 male</code>
+    </pre>
+  </section>
+
+
+  <section class="slide">
+    <h2>Литература</h2>
+    <ul>
+      <li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
+      intro</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
+      </li>
+      <li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
+      <li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/" target="_blank">JavaScript Garden</a></li>
+      <li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
+    </ul>
+  </section>
+
+  <div class="progress"></div>
+
+  <script src="shower/shower.min.js"></script>
+</body>
+
+</html>
