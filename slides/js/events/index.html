@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Events</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+  <section class="slide intro">
+    <h2>Events</h2>
+  </section>
+
+  <section class="slide">
+    <h2>Events basics</h2>
+    <p>JavaScript выполняется в едином потоке. Обычно события становятся в очередь и обрабатываются в порядке поступления, асинхронно, независимо друг от друга.</p>
+
+    <pre>
+      <code>var btn = document.createElement('button');</code>
+      <code>btn.appendChild(document.createTextNode('нажми меня'));</code>
+      <code> </code>
+      <code>btn.addEventListener('click', function() {</code>
+      <code>  alert('А вот и алерт при клике!');</code>
+      <code>});</code>
+    </pre>
+    <ul>
+      <li><a href="http://devdocs.io/dom/eventtarget/addeventlistener" target="_blank">Обязательно к прочтению</a></li>
+      <li><a href="https://learn.javascript.ru/event-details" target="_blank">События в деталях</a></li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Объект события</h2>
+    <p>Объект события содержит ценную информацию о деталях события. Он передается первым аргументом в обработчик события.</p>
+
+    <pre>
+      <code>var btn = document.createElement('button');</code>
+      <code>btn.appendChild(document.createTextNode('нажми меня'));</code>
+      <code> </code>
+      <code>btn.addEventListener('click', function() {</code>
+      <code>  console.log('event: ', event);</code>
+      <code>  console.log('event.target: ', event.target);</code>
+      <code>});</code>
+    </pre>
+    <a href="http://devdocs.io/dom/event" target="_blank">Обязательно к прочтению</a>
+  </section>
+
+  <section class="slide">
+    <h2>Event bubbling</h2>
+    <p> Основной принцип всплытия: При наступлении события обработчики сначала срабатывают на самом вложенном элементе, затем на его родителе, затем выше и так далее, вверх по цепочке вложенности. Всплывают ПОЧТИ все события. Например, событие focus не всплывает.</p>
+
+    <div class="double">
+      <pre>
+        <code>&lt;ul&gt;</code>
+        <code>  &lt;li&gt;</code>
+        <code>    &lt;a href="#"&gt;click me!&lt;/a&gt;</code>
+        <code>  &lt;/li&gt;</code>
+        <code>&lt;/ul&gt;</code>
+      </pre>
+      <img src="pictures/bubbling.png" alt="">
+    </div>
+  </section>
+
+  <section class="slide text-small">
+    <h2>event.target</h2>
+    <p>Целевой элемент <i>event.target</i> - на каком бы элементе мы ни поймали событие, всегда можно узнать где конкретно оно произошло. Самый глубокий элемент, который вызывает событие, называется «целевым» или «исходным» элементом и доступен как <i>event.target</i>.</p>
+    <div>
+      <h3>Отличия от this(event.currentTarget):</h3>
+      <ul>
+        <li>event.target – это исходный элемент, на котором произошло событие, в процессе всплытия он неизменен.</li>
+        <li>this – это текущий элемент, до которого дошло всплытие, на нём сейчас выполняется обработчик.</li>
+      </ul>
+    </div>
+    <pre class="double">
+      <code>var list = document.createElement('ul');</code>
+      <code> </code>
+      <code>for (var i = 0; i &lt; 5; i++) {</code>
+      <code>  var link = document.createElement('a');</code>
+      <code>  link.setAttribute('href', '#');</code>
+      <code>  link.innerHTML = 'item ' + i;</code>
+      <code>  list.appendChild(link);</code>
+      <code>}</code>
+      <code> </code>
+      <code>list.addEventListener('click', function(event) {</code>
+      <code>  console.log('this: ', this);</code>
+      <code>  console.log('event target: ', event.target);</code>
+      <code>});</code>
+    </pre>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Прекращение всплытия</h2>
+
+    <h3><i>stopPropagation</i></h3>
+    <p>Всплытие идёт прямо наверх. Обычно событие будет всплывать наверх и наверх, до элемента html, а затем до document, а иногда даже до window, вызывая все обработчики на своем пути. Но любой промежуточный обработчик может решить, что событие полностью
+      обработано, и остановить всплытие. Для остановки всплытия нужно вызвать метод event.stopPropagation().</p>
+
+    <pre>
+      <code>&lt;body onclick="alert('сюда обработка не дойдёт')"&gt;</code>
+      <code>  &lt;button onclick="event.stopPropagation()"&gt;Кликни меня&lt;/button&gt;</code>
+      <code>&lt;/body&gt;</code>
+    </pre>
+
+    <h3><i>stopImmediatePropagation</i></h3>
+    <p>Если у элемента есть несколько обработчиков на одно событие, то даже при прекращении всплытия все они будут выполнены. То есть, stopPropagation препятствует продвижению события дальше, но на текущем элементе все обработчики отработают. Для того, чтобы
+      полностью остановить обработку, современные браузеры поддерживают метод event.stopImmediatePropagation(). Он не только предотвращает всплытие, но и останавливает обработку событий на текущем элементе.</p>
+  </section>
+
+  <section class="slide">
+    <h2>ACHTUNG MINEN!</h2>
+    <h3><i><b><u>Не прекращайте всплытие без необходимости!</u></b></i></h3>
+
+    <p> Всплытие – это удобно. Не прекращайте его без явной необходимости, очевидной и архитектурно прозрачной. Зачастую прекращение всплытия создаёт свои подводные камни, которые потом приходится обходить.</p>
+
+    <h3>Например:</h3>
+    <p>Мы делаем меню. Оно обрабатывает клики на своих элементах и делает для них stopPropagation. Вроде бы, всё работает. Позже мы решили отслеживать все клики в окне, для какой-то своей функциональности, к примеру, для статистики – где вообще у нас кликают
+      люди. Например, Яндекс.Метрика так делает, если включить соответствующую опцию. Над областью, где клики убиваются stopPropagation, статистика работать не будет! Получилась «мёртвая зона». Проблема в том, что stopPropagation убивает всякую возможность
+      отследить событие сверху, а это бывает нужно для реализации чего-нибудь «эдакого», что к меню отношения совсем не имеет.</p>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Event delegation(делегирование событий)</h2>
+    <p>Всплытие событий позволяет реализовать один из самых важных приёмов разработки – делегирование. Он заключается в том, что если у нас есть много элементов, события на которых нужно обрабатывать похожим образом, то вместо того, чтобы назначать обработчик
+      каждому – мы ставим один обработчик на их общего предка. Из него можно получить целевой элемент event.target, понять на каком именно потомке произошло событие и обработать его.</p>
+    <h3>Алгоритм:</h3>
+    <ul>
+      <li>Вешаем обработчик на контейнер.</li>
+      <li>В обработчике: получаем event.target.</li>
+      <li>В обработчике: если event.target или один из его родителей в контейнере (this) – интересующий нас элемент – обработать его.</li>
+    </ul>
+    <h3>Зачем использовать</h3>
+    <ul>
+      <li>Упрощает инициализацию и экономит память: не нужно вешать много обработчиков.</li>
+      <li>Меньше кода: при добавлении и удалении элементов не нужно ставить или снимать обработчики.</li>
+      <li>Удобство изменений: можно массово добавлять или удалять элементы
+    путём изменения innerHTML.</li>
+    </ul>
+    <a href="https://davidwalsh.name/event-delegate" target="_blank">Обязательно к прочтению</a>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Пример делегирования событий</h2>
+    <pre class="double">
+      <code>(function() {</code>
+      <code>  'use strict';</code>
+      <code> </code>
+      <code>  var list = document.createElement('nav');</code>
+      <code> </code>
+      <code>  for (var i = 0; i &lt; 5; i++) {</code>
+      <code>    var link = document.createElement('a');</code>
+      <code>    link.setAttribute('href', '#');</code>
+      <code>    link.innerHTML = 'item ' + i;</code>
+      <code>    link.style.display = 'inline-block';</code>
+      <code>    link.style.padding = '20px';</code>
+      <code>    link.style.outline = '1px solid #ccc';</code>
+
+      <code>    list.appendChild(link);</code>
+      <code>  }</code>
+      <code> </code>
+      <code>list.addEventListener('click', function(event) {</code>
+      <code>  console.log('this: ', this);</code>
+      <code>  console.log('event target: ', event.target);</code>
+      <code> </code>
+      <code>  event.target.style.backgroundColor = 'aqua';</code>
+      <code>  setTimeout(function() {</code>
+      <code>    event.target.style.backgroundColor = '';</code>
+      <code>  }, 100);</code>
+      <code>});</code>
+      <code> </code>
+      <code>document.body.appendChild(list);</code>
+      <code>})();</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Литература</h2>
+    <ul>
+      <li><a href="https://autotelicum.github.io/Smooth-CoffeeScript/literate/js-intro.html" target="_blank">JavaScript
+      intro</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript guide</a>
+      </li>
+      <li><a href="http://learn.javascript.ru/" target="_blank">Учебник Кантора</a></li>
+      <li><a href="http://bonsaiden.github.io/JavaScript-Garden/ru/" target="_blank">JavaScript Garden</a></li>
+      <li><a href="http://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a></li>
+    </ul>
+  </section>
+
+  <div class="progress"></div>
+
+  <script src="shower/shower.min.js"></script>
+</body>
+
+</html>
