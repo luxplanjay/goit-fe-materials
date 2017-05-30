@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Lodash</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+  <section class="slide intro">
+    <h2>Lodash</h2>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Что такое Lodash?</h2>
+    <p><a href="https://lodash.com/" target="_blank">Lodash</a> - это библиотека для работы с коллекциями данных. Она предоставляет массу полезных функций для работы с данными, конвертирования форматов, мапинга, сортировки, фильтрации итд.</p>
+    <h3>Почему lodash?:</h3>
+    <ul>
+      <li>декларативность кода, мы хотим чтобы наш код говорил ЧТО мы делаем, а не КАК мы это делаем.</li>
+      <li>оптимизация скорости исполнения кода</li>
+    </ul>
+    <h3>Уcтановка:</h3>
+    <ul>
+      <li>через cdn - <a href="https://www.jsdelivr.com/projects/lodash" target="_blank">lodash cdn link</a></li>
+      <li>скачать <a href="https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.min.js" target="_blank">lodash.min.js</a> и подключить в index.html</li>
+      <li>как <a href="https://www.npmjs.com/package/lodash" target="_blank">npm пакет</a>, используя системы сборки, после чего использовать как зависимость</li>
+    </ul>
+  </section>
+
+  <section class="slide text-small code-small">
+    <h2>Метод forEach/forEachRight</h2>
+    <div class="double">
+      <div>
+        <p><code>_.forEach(collection, [iteratee=_.identity])</code> - используется для итерации массивов и коллекций. Проходит по всем елементам коллекции вызывая фукнцию-итератор для каждого из них.</p>
+        <pre>
+          <code>var arr = [1, 2, 3];</code>
+          <code>_.forEach(arr, function(item) {</code>
+          <code>  console.log(item); // 1, 2, 3</code>
+          <code>});</code>
+        </pre>
+      </div>
+      <div>
+        <p><code>_.forEachRight(collection, [iteratee=_.identity])</code> - делает тоже что и forEach только с конца коллекции.</p>
+          <pre>
+            <code>var arr = [1, 2, 3];</code>
+            <code>_.forEachRight(arr, function(item) {</code>
+            <code>  console.log(item); // 3, 2, 1</code>
+            <code>});</code>
+          </pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Метод map</h2>
+    <p><code>_.map(collection, [iteratee=_.identity])</code> - создает массив елементов проходя через каждый елемент коллекции, к которой мы применяем map, вызывая функцию-итератор для каждого из них.</p>
+    <pre>
+      <code>var data = [{id: 1}, {id: 2}, {id: 3}];</code>
+      <code>var arr = _.map(data, function(item) {</code>
+      <code>  return item.id;</code>
+      <code>});</code>
+      <code> </code>
+      <code>console.log(arr); // 1, 2, 3</code>
+    </pre>
+  </section>
+
+  <section class="slide text-small code-small">
+    <h2>Методы filter/reject</h2>
+    <div class="double">
+      <div>
+        <p><code>_.filter(collection, [predicate=_.identity])</code> - используется когда из массива нужно отобрать елементы которые удовлетворяют условие. Результатом выполнения всегда возвращается массив.</p>
+        <pre>
+          <code>var data = [1, 2, 3, 4, 5, 6];</code>
+          <code>var arr = _.filter(data, function (item) {</code>
+          <code>  return item &lt; 4;</code>
+          <code>});</code>
+          <code>console.log('resulting array: ', arr); // [1, 2, 3]</code>
+        </pre>
+      </div>
+      <div>
+        <p><code>_.reject(collection, [predicate=_.identity])</code> - противоположность filter, возвращает елементы коллекции которые не удовлетворяют условие. Результатом выполнения всегда возвращается массив.</p>
+        <pre>
+          <code>var data = [1, 2, 3, 4, 5, 6];</code>
+          <code>var arr = _.reject(data, function (item) {</code>
+          <code>  return item &lt; 4;</code>
+          <code>});</code>
+          <code>console.log('resulting array: ', arr); // [4, 5, 6]</code>
+        </pre>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <section class="slide text-small">
+    <h2>Метод includes</h2>
+    <p><code>_.includes(collection, value, [fromIndex=0])</code> - проверяет есть ли value в collection. Если collection это строка, то проверяется вхождение value в строку. Возвращает true или false.</p>
+    <pre>
+      <code>var images = [</code>
+      <code>  {src: '', alt: 'summer vacation'},</code>
+      <code>  {src: '', alt: 'winter vacation'},</code>
+      <code>  {src: '', alt: 'hot summer'},</code>
+      <code>  {src: '', alt: 'cool winter'},</code>
+      <code>  {src: '', alt: 'winter and summer combined'}</code>
+      <code>];</code>
+      <code>var summerPics = _.filter(images, function (item) {</code>
+      <code>  return _.includes(item.alt, 'summer');</code>
+      <code>});</code>
+      <code>console.log(summerPics); //...</code>
+    </pre>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Метод find/findLast</h2>
+    <p><code>_.find(collection, [predicate=_.identity], [fromIndex=0])</code> - проходит по елементам коллекции и возвращает первый елемент который удовлетворяет условие. Результатом выполнения всегда будет сам елемент массива, а не набор елементов(массив).
+      Чаще всего используется когда есть елемент с уникальным значением.</p>
+    <p><code>_.findLast(collection, [predicate=_.identity], [fromIndex=collection.length-1])</code> - делает тоже что и find только с конца коллекции.</p>
+
+    <div class="double">
+      <pre>
+        <code>var arr = [1, 2, 3, 4, 5];</code>
+        <code>var result = _.find(arr, function (item) {</code>
+        <code>  return item &gt; 2;</code>
+        <code>});</code>
+        <code>console.log(result); // 3</code>
+      </pre>
+      <pre>
+        <code>var arr = [1, 2, 3, 4, 5];</code>
+        <code>var result = _.findLast(arr, function (item) {</code>
+        <code>  return item &gt; 2;</code>
+        <code>});</code>
+        <code>console.log(result); // 5</code>
+      </pre>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Методы without/pull</h2>
+    <div class="double">
+      <div>
+        <p><code>_.without(array, [values])</code> - возвращает новый массив без елементов указаных в [values], не мутирует исходный массив. Работает только с массивом примитивов.</p>
+        <pre>
+          <code>var arr = [1, 2, 3, 4 ,5];</code>
+          <code>var result = _.without(arr, 1, 2, 3);</code>
+          <code>console.log('result: ', result); // [4, 5]</code>
+        </pre>
+      </div>
+      <div>
+        <p><code>_.pull(array, [values])</code> - мутирует исходный массив 'на месте', удаляя из него елементы указаные в [values]. Работает только с массивом примитивов.</p>
+        <pre>
+          <code>var arr = [1, 2, 3, 4 ,5];</code>
+          <code>var result = _.without(arr, 1, 2, 3);</code>
+          <code>console.log('result: ', result); // [4, 5]</code>
+        </pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Метод remove</h2>
+    <p><code>_.remove(array, [predicate=_.identity])</code> - удаляет все елементы из массива, для которых функция-итератор вернет true. Мутирует исходный массив.</p>
+    <pre>
+      <code>var users = [</code>
+      <code>  {id: 1, name: 'alex', isCool: false},</code>
+      <code>  {id: 2, name: 'singu', isCool: true},</code>
+      <code>  {id: 3, name: 'mango', isCool: true}</code>
+      <code>];</code>
+      <code> </code>
+      <code>_.remove(users, {id: 2});</code>
+      <code>console.log(users); // [{obj}, {obj}]</code>
+    </pre>
+  </section>
+
+  <section class="slide code-small">
+    <h2>Методы every и some</h2>
+    <div class="double">
+      <div>
+        <p><code>_.every(collection, [predicate=_.identity])</code> - проверяет выполняют ли еллементы коллекции какое-то условие. Прекращает выполнение при первом false. Вернет true для пустой коллекции.</p>
+        <pre>
+          <code>var users = [</code>
+          <code>  {id: 1, isActive: true},</code>
+          <code>  {id: 2, isActive: false},</code>
+          <code>  {id: 3, isActive: true},</code>
+          <code>  {id: 4, isActive: true}</code>
+          <code>];</code>
+          <code> </code>
+          <code>var areAcrive = _.every(users, {'isActive': true});</code>
+          <code>console.log('areAcrive: ', areAcrive); // false</code>
+        </pre>
+      </div>
+      <div>
+        <p><code>_.some(collection, [predicate=_.identity])</code> - проверяет выполняет ли хотябы елемент в коллекции какое-то условие. Прекращает выполнения при первом true.</p>
+        <pre>
+          <code>var users = [</code>
+          <code>  {id: 1, isActive: true},</code>
+          <code>  {id: 2, isActive: true},</code>
+          <code>  {id: 3, isActive: false},</code>
+          <code>  {id: 4, isActive: true}</code>
+          <code>];</code>
+          <code> </code>
+          <code>var result = _.some(users, {'isActive': true});</code>
+          <code>console.log(result); // true</code>
+        </pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Метод reduce</h2>
+    <p><code>_.reduce(collection, [iteratee=_.identity], [accumulator])</code> - проходит по каждому елементу массива и накапливает результат работы функции-итератора с предыдущими вычислениями в аккумуляторе.</p>
+    <pre>
+      <code>var arr = [1, 2, 3, 4];</code>
+      <code>var result = _.reduce(arr, function (acc, item) {</code>
+      <code>  return acc + item;</code>
+      <code>}, 0);</code>
+      <code>console.log('result: ', result); // 10</code>
+    </pre>
+  </section>
+
+  <section class="slide text-small code-small">
+    <h2>Методы sortBy и groupBy</h2>
+    <div class="double">
+      <div>
+        <p><code>_.sortBy(collection, [iteratees=[_.identity]])</code> - возвращает отсортированный, в зависимости от условия, по возрастанию массив елементов.</p>
+        <pre>
+          <code>var users = [</code>
+          <code>  {name: 'singu', joined: 2012},</code>
+          <code>  {name: 'mango', joined: 2006},</code>
+          <code>  {name: 'ajax', joined: 2017},</code>
+          <code>  {name: 'chelsey', joined: 2009}</code>
+          <code>];</code>
+          <code> </code>
+          <code>var result = _.sortBy(users, function (item) {</code>
+          <code>  return item.joined;</code>
+          <code>});</code>
+          <code>console.log(result); // ...</code>
+        </pre>
+      </div>
+      <div>
+        <p><code>_.groupBy(collection, [iteratee=_.identity])</code> - возвращает обьект с полями true и false, значениями которых будут массивы елементов в засисимости от условия.</p>
+        <pre>
+          <code>var users = [</code>
+          <code>  {name: 'singu', joined: 2012, isActive: false},</code>
+          <code>  {name: 'mango', joined: 2006, isActive: true},</code>
+          <code>  {name: 'ajax', joined: 2017, isActive: false},</code>
+          <code>  {name: 'chelsey', joined: 2009, isActive: true}</code>
+          <code>];</code>
+          <code> </code>
+          <code>var result = _.groupBy(users, {'isActive': true});</code>
+          <code>console.log(result); // ...</code>
+        </pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Методы times и random</h2>
+    <p><code>_.times(n, [iteratee=_.identity])</code> - вызывает функцию-итератор n раз, возвращает массив результатов каждой итерации.</p>
+    <p><code>_.random([lower=0], [upper=1], [floating])</code> - создает случайное число в диапазоне.</p>
+    <pre>
+      <code>var numbers = [];</code>
+      <code>_.times(5, function () {</code>
+      <code>  numbers.push(_.random(1,100));</code>
+      <code>});</code>
+      <code>console.log(numbers); // ...</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Метод cloneDeep</h2>
+    <p><code>_.cloneDeep(value)</code> - создает идеальную копию данных value. Рекурсивно клонирует любую вложенность обьекта.</p>
+    <pre>
+      <code>var data = {</code>
+      <code>  title: 'cool movies',</code>
+      <code>  movies: [ {name: 'first movie'}, {name: 'second movie'}, {name: 'third movie'}]</code>
+      <code>};</code>
+      <code>var clone = _.cloneDeep(data);</code>
+      <code>onsole.log('original: ', data); // ...</code>
+      <code>console.log('clone: ', clone); // ...</code>
+    </pre>
+  </section>
+
+  <section class="slide text-small">
+    <h2>Методы has/get/set</h2>
+    <p><code>_.has(object, path)</code> - проверяет наличие свойства path у обьекта.</p>
+    <p><code>_.get(object, path, [defaultValue])</code> - возвращает значение свойства path. Если результат undefined то верентся defaultValue.</p>
+    <p><code>_.set(object, path, value)</code> - запишет value в свойство path обьекта. Если части path не существует, она будет создана. <i>Этот метод мутирует обьект!</i></p>
+
+    <pre>
+      <code>var data = { a: [ { b: { c: 3 } } ] };</code>
+      <code>console.log( _.has(data, 'a[0].b.c') ); // true</code>
+      <code>console.log( _.get(data, 'a[0].b.c') ); // 3</code>
+      <code>_.set(data, 'a[0].b.c', 4);</code>
+      <code>console.log( _.get(data, 'a[0].b.c') ); // 4</code>
+    </pre>
+
+  </section>
+
+  <section class="slide text-small">
+    <h2>Методы flatten\flattenDeep\flattenDepth</h2>
+    <p><code>_.flatten(array)</code> - 'разглаживает' array на один уровень вложености.</p>
+    <p><code>_.flattenDeep(array)</code> - рекурсивно 'разглаживает' array до нулевой вложености.</p>
+    <p><code>_.flattenDepth(array, [depth=1])</code> - рекурсивно 'разглаживает' array, depth раз.</p>
+
+    <pre>
+      <code>var arr = [1, 2, [3, 4]];</code>
+      <code>console.log( _.flatten(arr) ); // [1, 2, 3, 4]</code>
+      <code> </code>
+      <code>var arr = [1, [2, [3, [4]], 5]]; // [1, 2, 3, 4, 5]</code>
+      <code>console.log( _.flattenDeep(arr) );</code>
+      <code> </code>
+      <code>var arr = [1, [2, [3, [4]], 5]];</code>
+      <code>console.log( _.flattenDepth(arr, 1) ); // [1, 2, [3, [4]], 5]</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Метод chain</h2>
+    <p><code>_.chain(value)</code> - создает lodash обертку которая позволяет чейнить методы. Результат chain должен всегда быть разверну с помощью _.value</p>
+    <pre>
+      <code>var val = _.chain([{id: 2}, {id: 4}, {id: 1}, {id: 3}, {id: 5}, {id: 5}, {id: 3}, {id: 1}])</code>
+      <code>.map('id')</code>
+      <code>.uniq()</code>
+      <code>.sortBy()</code>
+      <code>.value();</code>
+      <code> </code>
+      <code>console.log(val); // [1, 2, 3, 4, 5]</code>
+    </pre>
+  </section>
+
+  <div class="progress"></div>
+
+  <script src="shower/shower.min.js"></script>
+</body>
+
+</html>
