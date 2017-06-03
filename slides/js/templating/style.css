@@ -1,0 +1,80 @@
+p, ul, a, code {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.intro {
+  position: relative;
+  background-image: url('pictures/intro.jpg');
+  background-size: cover;
+}
+
+.intro h2 {
+  position: absolute;
+  top: 75%;
+  font-size: 100px;
+  width: 50%;
+  color: #333;
+}
+
+.text-small p, .text-small code, .text-small ul {
+  font-size: 14px;
+}
+
+.code-small code {
+  font-size: 12px;
+}
+
+.text-small h3 {
+  font-size: 18px;
+}
+
+.how-it-works img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  height: auto;
+}
+
+
+ /* $gallery */
+
+ .gallery {
+   display: -webkit-flex;
+   display: -ms-flex;
+   display: flex;
+   -webkit-flex-direction: column;
+   -ms-flex-direction: column;
+   flex-flow: column wrap;
+   height: 430px;
+   justify-content: space-around;
+ }
+
+ .gallery img {
+   display: block;
+   width: 100%;
+   height: auto;
+ }
+
+ .gallery a {
+   text-decoration: none;
+ }
+
+ .gallery-item {
+   display: -webkit-flex;
+   display: -ms-flex;
+   display: flex;
+   justify-content: center;
+   -ms-align-items: center;
+   align-items: center;
+   width: 30%;
+ }
+
+
+.template {
+  display: block;
+  margin: 0 auto;
+}

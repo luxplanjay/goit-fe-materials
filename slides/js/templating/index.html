@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Templating</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+  <section class="slide intro">
+    <h2>Templating</h2>
+  </section>
+
+  <section class="slide">
+    <h2>Что такое шаблонизация?</h2>
+    <p>Шаблонизация – удобный способ генерации HTML по «шаблону» и данным. Большинство виджетов, получают готовый HTML/DOM и «оживляют» его. Это типичный случай в сайтах, где разметка и CSS уже есть, от JavaScript, условно говоря, требуются лишь обработчики,
+      чтобы менюшки заработали.</p>
+
+    <p>Но в сложных интерфейсах разметка изначально отсутствует на странице. Компоненты генерируют свой DOM сами, динамически, на основе данных, полученных с сервера или из других источников.</p>
+
+    <p>Суть шаблонизации заключается в том, чтобы отделить каркас страницы от программного кода. Каркас страницы помещается в отдельный файл (шаблон), в местах, где необходимо вывести данные размещаются специальные псевдопеременные. Сценарий загружает нужный
+      шаблон, заменяет в нем псевдопеременные на соответствующие данные и выводит.</p>
+  </section>
+
+  <section class="slide list">
+    <h2>We are legion!</h2>
+    <div class="gallery">
+      <div class="gallery-item"><a href="http://handlebarsjs.com/" target="_blank">
+        <img src="pictures/handlebars.png" alt="">
+      </a></div>
+      <div class="gallery-item"><a href="https://pugjs.org/api/getting-started.html" target="_blank">
+        <img src="pictures/pug.jpg" alt="">
+      </a></div>
+      <div class="gallery-item"><a href="https://lodash.com/docs/4.17.4#template" target="_blank">
+        <img src="pictures/lodash.svg" alt="">
+      </a></div>
+      <div class="gallery-item"><a href="https://mustache.github.io/" target="_blank">
+        <img src="pictures/mustache.png" alt="">
+      </a></div>
+      <div class="gallery-item"><a href="http://ejs.co/" target="_blank">
+        <img src="pictures/ejs.gif" alt="">
+      </a></div>
+      <div class="gallery-item"><a href="http://haml.info/" target="_blank">
+        <img src="pictures/haml.jpg" alt="">
+      </a></div>
+    </div>
+  </section>
+
+  <section class="slide how-it-works">
+    <h2>Magic?</h2>
+    <img src="pictures/how-it-works.png" alt="">
+  </section>
+
+  <section class="slide">
+    <h2>Nope! - enter Lodash syntax</h2>
+    <p>Шаблон – это строка в специальном формате со специальными разделителями, которая путём подстановки значений и выполнения встроенных фрагментов кода превращается в DOM/HTML.</p>
+    <ul>
+      <li>
+        &lt;% ... %&gt; – для кода. Код между разделителями &lt;% ... %&gt; будет выполнен «как есть»
+      </li>
+      <li>
+        &lt;%= expr %&gt; – для вставки expr как HTML. Переменная или выражение внутри &lt;%= ... %&gt; будет вставлено «как есть». Например: &lt;%= title %&gt; вставит значение переменной title, а &lt;%= 2+2 %&gt; вставит 4.
+      </li>
+      <li>
+        &lt;%- expr %&gt; – для вставки expr как текста. Переменная или выражение внутри &lt;%- ... %&gt; будет вставлено «как текст», то есть с заменой символов &lt; &gt; & " ' на соответствующие HTML-entities.
+      </li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Lodash powered menu!</h2>
+    <pre>
+      <code>var data = {</code>
+      <code>  title: 'Eat it createElement, templates rule!',</code>
+      <code>  items: ['home', 'about', 'services', 'contacts']</code>
+      <code>};</code>
+    </pre>
+    <pre>
+      <code>&lt;div class="menu"&gt;</code>
+      <code>  &lt;h2 class="title"&gt;&lt;%- title %&gt;&lt;/h2&gt;</code>
+      <code>  &lt;ul class="list"&gt;</code>
+      <code>  &lt;% _.forEach(items, function(item) { %&gt;</code>
+      <code>    &lt;li class="list-item"&gt;&lt;%- item %&gt;&lt;/li&gt;</code>
+      <code>  &lt;% }); %&gt;</code>
+      <code>  &lt;/ul&gt;</code>
+      <code>&lt;/div&gt;</code>
+    </pre>
+  </section>
+
+  <section class="slide">
+    <h2>Хранение шаблона в документе</h2>
+    <p>Шаблон – это многострочный HTML-текст. Записывать его прямо в скрипте – неудобно. Один из альтернативных способов объявления шаблона – записать его в HTML, в тег &lt;script&gt; с нестандартным type, например "text/template". Если type не знаком браузеру,
+      то содержимое такого скрипта игнорируется, однако оно доступно при помощи innerHTML\textContent.</p>
+    <p><code>var html = document.getElementById('menu').textContent;</code></p>
+    <img src="pictures/template.jpg" class="template" alt="" width="400">
+  </section>
+
+  <section class="slide">
+    <h2>Функция _.template</h2>
+    <p>Для работы с шаблоном в библиотеке LoDash есть функция <code>_.template(tmpl, data, options)</code>. Эта функция запускает «компиляцию» шаблона tmpl и возвращает результат в виде функции, которую далее можно запустить с данными и получить строку-результат.</p>
+    <ul>
+      <li>tmpl - шаблон</li>
+      <li>data - обьект с данными</li>
+      <li>options - необязательные настройки</li>
+    </ul>
+    <p>Вызов _.template(str) разбивает строку str по разделителям и, при помощи new Function создаёт на её основе JavaScript-функцию. Тело этой функции создаётся таким образом, что код, который в шаблоне оформлен как &lt;% ... %&gt; – попадает в неё «как
+      есть», а переменные и текст прибавляются к специальному временному «буферу», который в итоге возвращается.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Let's compare</h2>
+    <h3>Pros</h3>
+    <ul>
+      <li>поддерживаемость кода</li>
+      <li>читабельность кода</li>
+      <li>легко вносить правки</li>
+      <li>улучшает организационную часть, выделяем представление в отдельный слой</li>
+    </ul>
+    <h3>Cons</h3>
+    <ul>
+      <li>чуть-чуть замедляет rendering</li>
+    </ul>
+  </section>
+
+  <div class="progress"></div>
+
+  <script src="shower/shower.min.js"></script>
+</body>
+
+</html>
