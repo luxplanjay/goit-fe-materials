@@ -1,0 +1,66 @@
+p, ul, a, code {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.intro {
+  position: relative;
+  background-image: url('pictures/fight.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0 50%;
+}
+
+.text-small p, .text-small code, .text-small ul {
+  font-size: 14px;
+}
+
+.text-tiny p, .text-tiny code, .text-tiny ul {
+  font-size: 12px;
+}
+
+.code-small code {
+  font-size: 12px;
+}
+
+.text-small h3 {
+  font-size: 18px;
+}
+
+
+.ssr img {
+  display: block;
+  width: 100%;
+}
+
+.ssr .content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ssr .content div {
+  width: 48%;
+}
+
+.csr img {
+  display: block;
+  width: 55%;
+  margin: 0 auto;
+}
+
+.ssr-react {
+  background-image: url('pictures/ssr-main.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+}
+
+.csr-react {
+  background-image: url('pictures/csr-main.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+}
