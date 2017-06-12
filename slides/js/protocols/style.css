@@ -1,0 +1,44 @@
+p, ul, a, code {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.intro {
+  position: relative;
+  background-image: url('pictures/intro.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro h2 {
+  position: absolute;
+  top: 75%;
+  font-size: 80px;
+  color: #333;
+}
+
+.text-small p, .text-small code, .text-small ul {
+  font-size: 14px;
+}
+
+.text-tiny p, .text-tiny code, .text-tiny ul {
+  font-size: 12px;
+}
+
+.code-small code {
+  font-size: 12px;
+}
+
+.text-small h3 {
+  font-size: 18px;
+}
+
+.diff img {
+  display: block;
+  width: 55%;
+  height: auto;
+  margin: 0 auto;
+}
