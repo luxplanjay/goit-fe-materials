@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>RegExp</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+<section class="slide intro">
+  <h2>Regular Expressions</h2>
+</section>
+
+<section class="slide">
+  <h2>Regular Expressions</h2>
+  <p><i><b>Регулярное выражение</b></i> - набор символов, который формирует шаблон поиска подстрок.</p>
+  <p>Синтаксис - <code>/pattern/flags</code></p>
+
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/regexp" target="_blank">RegExp</a></b></i> - конструктор который создает объект регулярного выражения для сопоставления текста с шаблоном. При поиске данных в тексте мы можем использовать этот шаблон, чтобы описать что мы ищем.</p>
+
+  <pre>
+    <code>var string = 'credit card number: 1234-4562-1425';</code>
+    <code>var regV = /\b[0-9]{4}-[0-9]{4}-[0-9]{4}\b/g;</code>
+    <code>var sameRegV = new RegExp('\b[0-9]{4}-[0-9]{4}-[0-9]{4}\b', 'g');</code>
+  </pre>
+
+  <p>Регулярные выражения могут быть единственным символом или более сложным шаблоном и использоваться для выполнения всех типов текстового поиска и операций по замене текста.</p>
+</section>
+
+<section class="slide">
+  <h2>Символ (Literal)</h2>
+  <p><i><b>Символ</b></i> - это любой символ, который мы используем в поиске или совпадающем выражении.</p>
+  <p>Например, чтобы найти 'ind' в 'windows', <code>/ind/</code> это строка символов - каждый символ играет роль в поиске, это буквально строка, которую мы хотим найти.</p>
+  <pre>
+    <code>var string = 'windows';</code>
+    <code>var regV = /ind/;</code>
+    <code>console.log(string.match(regV)); // ...</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Флаги (Flags)</h2>
+  <p>Флаги используются для указания дополнительных параметров регулярного выражения:</p>
+
+  <ul>
+    <li><i><b>i</b></i>	- указывает на поиск не чувствительный к регистру.</li>
+    <li><i><b>g</b></i> - глобальный поиск, найти все совпадения, а не останавливаться после первого.</li>
+    <li><i><b>m</b></i> - многострочный поиск.</li>
+  </ul>
+
+  <pre>
+    <code>var string = 'Is that all there is?';</code>
+    <code>var regV = /is/gi;</code>
+    <code>console.log(string.match(regV));</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Наборы (Character sets)</h2>
+  <p><i><b><a href="https://goo.gl/0o7CS2" target="_blank">Набор</a></b></i> - используется для поиска символа из набора.</p>
+  <p>К примеру:</p>
+  <ul>
+    <li><code>/[0-9]/</code> описывает любое число от 0 до 9.</li>
+    <li><code>/[a-z]/</code> описывает любую букву от a до z.</li>
+  </ul>
+
+  <pre>
+    <code>var string = 'random text with a number - 5';</code>
+    <code>var regV = /[0-9]/;</code>
+    <code>console.log(string.match(regV)); // 5</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Метасимволы (Boundaries)</h2>
+  <p><i><b><a href="https://goo.gl/27aELq" target="_blank">Метасимволы</a></b></i> - это один или несколько специальных символов, которые имеют уникальный смысл и НЕ используются как литералы в выражении поиска.</p>
+
+  <pre>
+    <code>var string = '1 random text 2';</code>
+    <code>var fistRegV = /^[0-9]/;</code>
+    <code>var lastRegV = /[0-9]$/;</code>
+    <code>console.log(string.match(firstRegV)); // 1</code>
+    <code>console.log(string.match(lastRegV)); // 2</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Классы (Character Classes)</h2>
+  <p><i><b><a href="https://goo.gl/uInqfA" target="_blank">Классы</a></b></i> - коллекция специальных символов комбинирующих в себе определенные правила поиска.</p>
+  <ul>
+    <li>\d - описывает все цифры, эквивалентно [0-9]</li>
+    <li>\D - описывает любой символ кроме цифр</li>
+    <li>\w - описывает все символы которые являются буквами или цифрами</li>
+    <li>\W - описывает все символы которые НЕ являются буквами или цифрами(пробелы, точки, запятые итд)</li>
+    <li>\s - описывает все пустые символы(пробелы, табуляции, переносы строк)</li>
+    <li>\S - описывает все символы которые НЕ являются пустыми символами</li>
+  </ul>
+
+  <pre>
+    <code>var string = '12345';</code>
+    <code>var regV = /\d/g;</code>
+    <code>console.log(string.match(regV)); // ["1", "2", "3", "4", "5"]</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Квантификаторы (Quantifiers)</h2>
+  <p><i><b><a href="https://goo.gl/PobsBO" target="_blank">Квантификаторы</a></b></i> - коллекция специальных символов которые выполняют роль... множителя поиска.</p>
+
+  <pre>
+    <code>var string  = '12345 123 123467 1234 987';</code>
+    <code>var pattern = /[0-9]+/g;</code>
+    <code>console.log(string.match(pattern)); // ["12345", "123", "123467", "1234", "987"]</code>
+    <code> </code>
+    <code>var regV = /\b[0-9]{3}\b/g;</code>
+    <code>console.log(string.match(regV)); // ["123", "987"]</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Методы строк</h2>
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/string/match" target="_blank"><code>str.match(regexp)</code></a></b></i> - принимает регулярное выражение и возвращает массив вхождений.</p>
+  <pre>
+    <code>var string = 'just a random string';</code>
+    <code>var regV = /\w+/g;</code>
+    <code>console.log(string.match(regV)); // ["just", "a", "random", "string"]</code>
+  </pre>
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/string/search" target="_blank"><code>str.search(regexp)</code></a></b></i> - принимает регулятрное выражение, игнорирует флаг global и возвращает индекс первого вхождения, или -1 если ничего не найдено.</p>
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/string/split" target="_blank"><code>str.split([separator[, limit]])</code></a></b></i> - может принимать в качестве разделителя регулярное выражение.</p>
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/string/replace" target="_blank"><code>str.replace(regexp|substr, newSubstr|function)</code></a></b></i> - принимает 2 параметра, регулярное выражение и то на что заменить вхождения, если таковые есть.</p>
+</section>
+
+<section class="slide">
+  <h2>Методы RegExp</h2>
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/regexp/test" target="_blank"><code>regexObj.test(str)</code></a></b></i> - принимает строку и возвращает истину или ложь в зависимости от того есть ли в строке набор символов соответствующий регулярному выражению.</p>
+  <p>Хорошо использовать при валидации форм.</p>
+  <pre>
+    <code>var string = 'Lorem ipsum dolor sit , sed do tempor singu@hotmail.com ut labore';</code>
+    <code>var regV = /\w+@\w+\.\w+/;</code>
+    <code>console.log( regV.test(string) ); // true</code>
+  </pre>
+  <p><i><b><a href="http://devdocs.io/javascript/global_objects/regexp/exec" target="_blank"><code>regexObj.exec(str)</code></a></b></i> - очень похож на метод <code>string.match</code>. Но при установленом флаге global, в отличии от match мы не получим массив вхождений. Зато при последующих вызовах exec будет меняться match и <a href="http://devdocs.io/javascript/global_objects/regexp/lastindex" target="_blank">lastIndex</a>, который используется методами RegExp для хранения индекса последнего результата.</p>
+</section>
+
+<section class="slide">
+  <h2>Доп материалы</h2>
+  <ul>
+    <li><a href="https://learn.javascript.ru/regular-expressions-javascript" target="">Раздел учебника Кантора</a></li>
+    <li><a href="http://regexr.com/" target="_blank">regexr.com</a></li>
+    <li><a href="https://www.cheatography.com/davechild/cheat-sheets/regular-expressions/" target="_blank">RegExp cheat sheet</a></li>
+  </ul>
+</section>
+
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+</body>
+
+</html>
