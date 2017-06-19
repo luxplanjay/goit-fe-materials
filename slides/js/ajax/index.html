@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AJAX</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+<section class="slide intro">
+  <h2 id="rest">REST <span>API</span> <span>AJAX</span></h2>
+</section>
+
+<section class="slide">
+  <h2>REST API</h2>
+  <p><a href="https://www.youtube.com/watch?v=YCcAE2SCQ6k" target="_blank">REST</a> (Representational state transfer) - представляет
+    собой стиль архитектуры, основанный на наборе принципов, которые описывают как сетевые ресурсы определяются и
+    адресуются</p>
+
+  <p>REST API - работает как 'вебсайт', мы посылаем запрос с клиента на сервер и получаем ответ по http(s)
+    протоколу.</p>
+
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank">HTTP методы запроса</a></p>
+  <ul>
+    <li>GET - запрашивает данные от сервера</li>
+    <li>POST - записывает данные на сервер</li>
+    <li>PUT - обновляет данные на сервере путем замены</li>
+    <li>DELETE - удаляет данные на сервере</li>
+  </ul>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?time_continue=10&v=llpr5924N7E" target="_blank">Дополнительное видео по
+        REST</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=6ycrnne76g0" target="_blank">Видео о RESTful API Design</a>
+    </li>
+  </ul>
+</section>
+
+<section class="slide types">
+  <h2>Основные форматы данных</h2>
+  <div>
+    <a href="https://en.wikipedia.org/wiki/XML" target="_blank">
+      <img src="pictures/xml.png" alt="xml">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">
+      <img src="pictures/csv.png" alt="csv">
+    </a>
+    <a href="http://www.json.org/index.html" target="_blank">
+      <img src="pictures/json.png" alt="json">
+    </a>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Основы работы с API</h2>
+  <p>Каждый API уникален, невозможно выучить 'код' для работы с одним API и использовать его для общения с другим. Можно
+    понять принцип и методы работы, после чего, все что нужно сделать, это ознакомиться с документацией API который
+    необходимо использовать.</p>
+
+  <p><code>https://api.apixu.com/v1/current.json?key=12345&q=Kharkiv</code></p>
+  <ul>
+    <li><code>https://api.apixu.com</code> - <span>endpoint, server, base URL, host. Точка входа на сервер.</span></li>
+    <li><code>/v1/current.json</code> - <span>ресурс к которому мы обращаемся</span></li>
+    <li><code>?</code> - <span>говорит о том что после идут параметры запроса</span></li>
+    <li><code>q=Kharkiv</code> - <span> один из параметров запроса для данного API</span></li>
+  </ul>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=ecT42O6I_WI" target="_blank">Видео с более детальным обьяснением
+        составления запроса к API</a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/watch?v=fEYx8dQr_cQ" target="_blank">Видео о работе с API используя jQuery,
+        полезно для тех кто будет заниматься не сложными сайтами</a>
+    </li>
+  </ul>
+</section>
+
+<section class="slide async">
+  <h2>Async call</h2>
+  <img src="pictures/let-me-win.jpg" alt="async call">
+</section>
+
+<section class="slide">
+  <h2>Promise API</h2>
+  <p><i><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promise (Обещание)</a><b></b></i> - это болванка для данных, значение которых мы не знаем в момент создания Promise.
+    Помогает сделать код чище, уменьшить количество зависимостей от внешних библиотек и подготовиться к async и await в
+    ES7.</p>
+  <h3>Отличия callback и promise:</h3>
+  <ul>
+    <li>Коллбэки это функции, обещания это объекты</li>
+    <li>Коллбэки передаются в качестве аргументов, обещания возвращаются</li>
+    <li>Коллбэки обрабатывают успешное или неуспешное завершение, обещания ничего не обрабатывают</li>
+    <li>Коллбэки могут обрабатывать несколько событий, обещания связаны только с одним событием</li>
+  </ul>
+</section>
+
+<section class="slide promise text-small">
+  <div class="double">
+    <ul>
+      <li><b><code>new Promise(fn)</code></b> - создаются путем вызова new Promise с одной функцией в качестве
+        аргумента. Вызов new Promise немедленно вызовет функцию, переданную в качестве аргумента. Цель этой функции
+        состоит в информировании объекта Promise, когда событие, с которым он связан, будет завершено.
+      </li>
+      <li><b><code>promise.then(onResolve, onReject)</code></b> - каждый промис получает этот метод, он позволяет обрабатывать результат промиса. Первый then получает в себя, как аргумент, результат resolve. Каждый последующий then получает, как аргумент, то что вернет предыдущий then.</li>
+      <li><b><code>promise.catch(onReject)</code></b> - хендлер для обработки состояния reject. Тело catch мы пишем сами. Обычно принято передавать инстанс Error.</li>
+      <li><b><code>Promise.all([promise1, promise2, …])</code></b> - возвращает promise когда <i><u>все</u></i>
+        промисы в массиве исполнились. Если все ок то вернется массив результатов исполнения каждого promise, или
+        фейлится с ошибкой на первом же промисе который не был resolved.
+      </li>
+    </ul>
+    <img src="pictures/promise.jpg" alt="promise">
+  </div>
+</section>
+
+<section class="slide party">
+  <h2>Promise Logic</h2>
+  <img src="pictures/promise-logic.png" alt="logic">
+  <i><b><u><a href="https://kosamari.com/notes/the-promise-of-a-burger-party" target="_blank">The Promise of a Burger Party</a></u></b></i>
+</section>
+
+<section class="slide">
+  <h2>Fetch API Basics</h2>
+  <p><b><a href="https://developer.mozilla.org/en/docs/Web/API/Fetch_API" target="_blank"><code>fetch(url, options)</code></a></b> - метод объекта window. Принимает 2 параметра: <i>url</i> - путь к ресурсу, и <i>options</i> - обьект настроек запроса.</p>
+  <pre>
+    <code>fetch('https://test-website.name/some/url', {</code>
+    <code>  method: 'get'</code>
+    <code>}).then(function(response) {</code>
+    <code>  //response handling</code>
+    <code>}).then(function(data) {</code>
+    <code>  // data handling</code>
+    <code>}).catch(function(err) {</code>
+    <code>  // error handling</code>
+    <code>});</code>
+  </pre>
+</section>
+
+<section class="slide text-small code-small">
+  <h2>Headers</h2>
+  <p>Очень важно иметь возможность указать параметры заголовков запроса. Для этого есть специальный 'класс' Headers. Для работы с обьектом заголовков есть набор методов: <code>append</code>, <code>has</code>, <code>get</code>, <code>set</code>, <code>delete</code>.</p>
+  <pre>
+    <code>var headers = new Headers();</code>
+    <code> </code>
+    <code>headers.append('Content-Type', 'text/plain');</code>
+    <code>headers.append('X-Custom-Header', 'custom value');</code>
+    <code>headers.has('Content-Type'); // true</code>
+    <code>headers.get('Content-Type'); // "text/plain"</code>
+    <code>headers.set('Content-Type', 'application/json');</code>
+    <code>headers.delete('X-Custom-Header');</code>
+  </pre>
+  <pre>
+    <code>var headers = new Headers({</code>
+    <code>  'Content-Type': 'application/json',</code>
+    <code>  'X-Custom-Header': 'custom value'</code>
+    <code>});</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Fetch with request headers</h2>
+  <pre>
+    <code>fetch('my-cool-website.net/data', {</code>
+    <code>  method: 'GET',</code>
+    <code>  mode: 'cors',</code>
+    <code>  headers: new Headers({</code>
+    <code>    'Content-Type': 'application/json',</code>
+    <code>    'X-Custom-Header': 'custom value'</code>
+    <code>  })</code>
+    <code>}).then(function() { /.../});</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Request</h2>
+  <p><b><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank"><code>Request</code></a></b> - экземпляр этого 'класса' представляет собой ту часть fetch, в которой хранится служебная информация запроса. Используется в совокупности с технологией
+    <a href="https://developer.mozilla.org/en/docs/Web/API/Service_Worker_API" target="_blank">Service Workers</a>.</p>
+  <pre>
+    <code>var request = new Request('my-cool-website.net/data', {</code>
+    <code>  method: 'GET',</code>
+    <code>  mode: 'cors',</code>
+    <code>  headers: new Headers({</code>
+    <code>    'Content-Type': 'application/json',</code>
+    <code>    'X-Custom-Header': 'custom value'</code>
+    <code>  })</code>
+    <code>});</code>
+    <code> </code>
+    <code>fetch(request).then(function() { /.../});</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Response</h2>
+  <p><b><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank"><code>Response</code></a></b> - в первый <code>then</code> метода <code>fetch</code> передается экземпляр 'класса' Response. В нем содержится служебная информация о состоянии ответа сервера.</p>
+  <pre>
+    <code>fetch('cool-website.net/data')</code>
+    <code>.then(function(response) {</code>
+    <code>  console.log( response );</code>
+    <code>});</code>
+  </pre>
+
+  <p><code>Response</code> 'снабжает' екземпляры следующими полезными методами: <code>clone()</code>, <code>error()</code>, <code>redirect()</code>, <code>arrayBuffer()</code>, <code>blob()</code>, <code>formData()</code>, <code>json()</code>, <code>text()</code></p>
+</section>
+
+<section class="slide">
+  <h2>Fetch не только для запросов</h2>
+  <p>С помощью <code>fetch</code> можно делать тоже самое что с XMLHttpRequest или $.ajax. К примеру постить json на удаленный сервер.</p>
+
+  <pre>
+    <code>var data = JSON.stringity({</code>
+    <code>  email: document.getElementById('email').value,</code>
+    <code>  answer: document.getElementById('answer').value</code>
+    <code>});</code>
+    <code> </code>
+    <code>fetch('test-website.net/storage', {</code>
+    <code>  method: 'post',</code>
+    <code>  body: data</code>
+    <code>});</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Доп материалы</h2>
+  <ul>
+    <li>
+      <a href="http://getinstance.info/articles/javascript/grokking-es6-promises-the-four-functions-you-need-to-avoid-callback-hel/" target="_blank">Статья описывающая базовые принципы Promise API</a>
+    </li>
+    <li>
+      <a href="https://davidwalsh.name/promises" target="_blank">Отличная статья по Promise от David Walsh</a>
+    </li>
+    <li>
+      <a href="https://kosamari.com/notes/the-promise-of-a-burger-party" target="_blank">The Promise of a Burger Party</a>
+    </li>
+    <li>
+      <a href="https://davidwalsh.name/fetch" target="_blank">Статья по Fetch</a>
+    </li>
+    <li>
+      <a href="https://developer.mozilla.org/en/docs/Web/API/Fetch_API" target="_blank">Fetch на MDN</a>
+    </li>
+    <li>
+      <a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch" target="_blank">Google рассказывает о fetch</a>
+    </li>
+  </ul>
+</section>
+
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+</body>
+
+</html>

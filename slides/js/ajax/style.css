@@ -1,0 +1,75 @@
+p, ul, a, code {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.intro {
+  position: relative;
+  background-image: url('pictures/intro.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro  h2 {
+  position: absolute;
+  top: 60%;
+  font-size: 80px;
+  color: #333;
+}
+
+.intro h2 span {
+  display: block;
+}
+
+.text-small p, .text-small code, .text-small ul {
+  font-size: 14px;
+}
+
+.text-tiny p, .text-tiny code, .text-tiny ul {
+  font-size: 12px;
+}
+
+.code-small code {
+  font-size: 12px;
+}
+
+.text-small h3 {
+  font-size: 18px;
+}
+
+.types div {
+  display: flex;
+  align-items: flex-start;
+}
+
+.types a {
+  display: block;
+  width: 33.333%;
+}
+
+.types img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.promise img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.async img {
+  display: block;
+  width: 65%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.party a {
+  font-size: 24px;
+}
