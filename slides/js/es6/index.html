@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ES6</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="shower list">
+
+<section class="slide intro">
+  <h2>ES6 basics</h2>
+</section>
+
+<section class="slide text-small">
+  <h2>Function scope -> Block scope</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5 function scope</b></code>
+      <code>var a = 1;</code>
+      <code>if(a > 0) {</code>
+      <code>  var b = 2;</code>
+      <code>}</code>
+      <code>console.log(a); // 1</code>
+      <code>console.log(b); // 2</code>
+    </pre>
+    <pre>
+      <code><b>// ES5 function scope</b></code>
+      <code>var a = 1;</code>
+      <code>if(a > 0) {</code>
+      <code>  function foo () {</code>
+      <code>    console.log('Hello!');</code>
+      <code>  }</code>
+      <code>}</code>
+      <code>foo(); // Hello</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 block scope</b></code>
+      <code>let a = 1;</code>
+      <code>if(a > 0) {</code>
+      <code>  let b = 2;</code>
+      <code>}</code>
+      <code>console.log(a); // 1</code>
+      <code>console.log(b); // error</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 block scope</b></code>
+      <code>let a = 1;</code>
+      <code>if(a > 0) {</code>
+      <code>  function foo () {</code>
+      <code>    console.log('Hello!');</code>
+      <code>  }</code>
+      <code>}</code>
+      <code>foo(); // error, foo is not defined</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>IIFE -> Blocks</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5 IIFE</b></code>
+      <code> </code>
+      <code>(function () {  // open IIFE</code>
+      <code>  var tmp = ···;</code>
+      <code>  ···</code>
+      <code>}());  // close IIFE</code>
+      <code> </code>
+      <code>console.log(tmp); // ReferenceError</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 blocks</b></code>
+      <code> </code>
+      <code>{  // open block</code>
+      <code>  let tmp = ···;</code>
+      <code>  ···</code>
+      <code>}  // close block</code>
+      <code> </code>
+      <code>console.log(tmp); // ReferenceError</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>Новые методы строк</h2>
+  <div>
+    <pre class="double">
+      <code>const name = 'Mango';</code>
+      <b><code>// String.startsWith()</code></b>
+      <code>console.log( name.startsWith('k') ); // false</code>
+      <code>console.log( name.startsWith('m') ); // false</code>
+      <code>console.log( name.startsWith('M') ); // true</code>
+      <code>console.log( name.startsWith('Man') ); // true</code>
+      <code>console.log( name.startsWith('') ); // true</code>
+      <code> </code>
+      <b><code>// String.endsWith()</code></b>
+      <code>console.log( name.endsWith('k') ); // false</code>
+      <code>console.log( name.endsWith('O') ); // false</code>
+      <code>console.log( name.endsWith('o') ); // true</code>
+      <code>console.log( name.endsWith('ngo') ); // true</code>
+      <code>console.log( name.endsWith('') ); // true</code>
+      <code> </code>
+      <b><code>// String.includes()</code></b>
+      <code>console.log( name.includes('k') ); // false</code>
+      <code>console.log( name.includes('a') ); // true</code>
+      <code>console.log( name.includes('man') ); // true</code>
+      <code>console.log( name.includes('') ); // true</code>
+      <code> </code>
+      <b><code>// String.repeat()</code></b>
+      <code>console.log( name.repeat(3) ); // MangoMangoMango</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>String Concatenation -> String Interpolation</h2>
+  <pre>
+    <code><b>// ES5 string concatenation</b></code>
+    <code>var user = { name: 'Mango', age: 2, status: 'happy' };</code>
+    <code>var about = 'My name is ' + user.name + ', I\'m ' + user.age + ' years old and ' + user.status + '.';</code>
+    <code>console.log(about); // My name is Mango, I'm 2 years old and happy.</code>
+  </pre>
+  <pre>
+    <code><b>// ES6 template literal and string interpolation</b></code>
+    <code>const user = { name: 'Mango', age: 2, status: 'happy' };</code>
+    <code>const about = `My name is ${user.name}, I'm ${user.age} years old and ${user.status}.`;</code>
+    <code>console.log(about); // My name is Mango, I'm 2 years old and happy.</code>
+  </pre>
+</section>
+
+<section class="slide text-small">
+  <h2>Arrow functions - code minimalism</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5</b></code>
+      <code>var calc = function (a, b) {</code>
+      <code>  return a + b;</code>
+      <code>};</code>
+      <code> </code>
+      <code><b>// ES6</b></code>
+      <code> const calc = (a, b) => { return a + b; };</code>
+      <code> </code>
+      <code><b>// ES6 one-liners</b></code>
+      <code> const calc = (a, b) => a + b};</code>
+    </pre>
+    <pre>
+      <code><b>// ES5</b></code>
+      <code>var arr = [1, 2, 3];</code>
+      <code>var squares = arr.map(function (x) {</code>
+      <code>  return x * x;</code>
+      <code>});</code>
+    </pre>
+    <pre>
+      <code><b>// ES6</b></code>
+      <code>const arr = [1, 2, 3];</code>
+      <code>const squares = arr.map((x) => x * x);</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide code-small">
+  <h2>Arrow functions - context preservation</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5 helper variable</b></code>
+      <code>function UiComponent() {</code>
+      <code>  var _this = this; // (context A)</code>
+      <code>  var button = document.getElementById('myButton');</code>
+      <code>  button.addEventListener('click', function () {</code>
+      <code>    console.log('CLICK');</code>
+      <code>    _this.handleClick(); // (context B)</code>
+      <code>  });</code>
+      <code>}</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 arrow function</b></code>
+      <code>function UiComponent() {</code>
+      <code>  const button = document.getElementById('myButton');</code>
+      <code>  button.addEventListener('click', () => {</code>
+      <code>    console.log('CLICK');</code>
+      <code>    this.handleClick(); // (context A)</code>
+      <code>  });</code>
+      <code>}</code>
+      <code> </code>
+    </pre>
+    <pre>
+      <code><b>// ES5 bind(this)</b></code>
+      <code>var greeter = {</code>
+      <code>  phrase: 'Hello there!',</code>
+      <code>  greet: function () {</code>
+      <code>    setTimeout(function () {</code>
+      <code>      console.log(this.phrase);</code>
+      <code>     }.bind(this), 1000);</code>
+      <code>  }</code>
+      <code>};</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 arrow function</b></code>
+      <code>const greeter = {</code>
+      <code>  phrase: 'Hello there!',</code>
+      <code>  greet() {</code>
+      <code>    setTimeout(() => {</code>
+      <code>      console.log(this.phrase);</code>
+      <code>     }, 1000);</code>
+      <code>  }</code>
+      <code>};</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>Destructuring objects</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5 multiline defs</b></code>
+      <code>var user = {</code>
+      <code>  name: 'Mango',</code>
+      <code>  age: 2,</code>
+      <code>  isHappy: true</code>
+      <code>};</code>
+      <code>var name = user.name;</code>
+      <code>var age = user.age;</code>
+      <code>var isHappy = user.isHappy;</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 destructuring</b></code>
+      <code>var user = {</code>
+      <code>  name: 'Mango',</code>
+      <code>  age: 2,</code>
+      <code>  isHappy: true</code>
+      <code>};</code>
+      <code>const { name, age, isHappy } = user;</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>Destructuring arrays</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5 multiline defs</b></code>
+      <code>var users = ['Mango', 'Singu', 'Ajax'];</code>
+      <code>var firstName = users[0];</code>
+      <code>var secondName = users[1];</code>
+      <code>var thirdName = users[2];</code>
+    </pre>
+    <pre>
+      <code><b>// ES6 destructuring</b></code>
+      <code>var users = ['Mango', 'Singu', 'Ajax'];</code>
+      <code>const [ firstName, secondName, thirdName ] = users;</code>
+      <code>console.log(firstName) // Mango</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>For-of</h2>
+  <pre>
+    <code>const users = ['Mango', 'Singu', 'Ajax'];</code>
+    <code> </code>
+    <code>for (const value of users) {</code>
+    <code>  console.log(value);</code>
+    <code>}</code>
+    <code>// Mango</code>
+    <code>// Singu</code>
+    <code>// Ajax</code>
+    <code> </code>
+    <code>for (const [index, value] of users.entries()) {</code>
+    <code>  console.log(`index: ${index}, value: ${value}`);</code>
+    <code>}</code>
+    <code>// index: 0, value: Mango</code>
+    <code>// index: 1, value: Singu</code>
+    <code>// index: 2, value: Ajax</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Function param defaults</h2>
+  <pre>
+    <code><b>// ES5</b></code>
+    <code>function foo(x, y, z) {</code>
+    <code> var x = x || 0;</code>
+    <code> var y = y || 1;</code>
+    <code> var z = z || 2;</code>
+    <code> ...</code>
+    <code>}</code>
+  </pre>
+  <pre>
+    <code><b>// ES6</b></code>
+    <code>function foo(x = 0, y = 1, z = 2) {</code>
+    <code>  ...</code>
+    <code>}</code>
+  </pre>
+</section>
+
+<section class="slide text-small">
+  <h2>Options object pattern</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5</b></code>
+      <code>function setUserOptions(opts) {</code>
+      <code>  var autoplay = opts.autoplay || false;</code>
+      <code>  var country = opts.country || 'us';</code>
+      <code>  var lang = opts.lang || 'en';</code>
+      <code>  ...</code>
+      <code>}</code>
+      <code> </code>
+      <code>setUserOptions({</code>
+      <code>  autoplay: true,</code>
+      <code>  country: 'ua',</code>
+      <code>  lang: 'fr',</code>
+      <code>});</code>
+    </pre>
+    <pre>
+      <code><b>// ES6</b></code>
+      <code>function setUserOptions({ </code>
+      <code>  autoplay = false,</code>
+      <code>  country = 'us',</code>
+      <code>  lang = 'en'</code>
+      <code>}) {</code>
+      <code>  ...</code>
+      <code>}</code>
+      <code>setUserOptions({</code>
+      <code>  autoplay: true,</code>
+      <code>  country: 'ua',</code>
+      <code>  lang: 'fr',</code>
+      <code>});</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Function expressions -> Method definitions</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5</b></code>
+      <code>var obj = {</code>
+      <code>  foo: function () {</code>
+      <code>    ...</code>
+      <code>  },</code>
+      <code>  bar: function () {</code>
+      <code>    this.foo();</code>
+      <code>  }</code>
+      <code>};</code>
+    </pre>
+    <pre>
+      <code><b>// ES6</b></code>
+      <code>const obj = {</code>
+      <code>  foo() {</code>
+      <code>    ...</code>
+      <code>  },</code>
+      <code>  bar() {</code>
+      <code>    this.foo();</code>
+      <code>  }</code>
+      <code>};</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>Constructor function -> Class Definition</h2>
+  <div class="double">
+    <pre>
+      <code><b>// ES5</b></code>
+      <code>function Animal(name. age) {</code>
+      <code>  this.name = name;</code>
+      <code>  this.age = age;</code>
+      <code>}</code>
+      <code> </code>
+      <code>Animal.prototype.getName = function () {</code>
+      <code>  return this.name;</code>
+      <code>};</code>
+      <code>Animal.prototype.getAge = function () {</code>
+      <code>  return this.age;</code>
+      <code>};</code>
+      <code> </code>
+      <code>var animal = new Animal('Mango', 2);</code>
+    </pre>
+    <pre>
+      <code><b>// ES6</b></code>
+      <code>class Animal {</code>
+      <code>  constructor(name, age) {</code>
+      <code>    this.name = name;</code>
+      <code>    this.age = age;</code>
+      <code>  }</code>
+      <code>  getName() {</code>
+      <code>    return this.name;</code>
+      <code>  }</code>
+      <code>  getAge() {</code>
+      <code>    return this.age;</code>
+      <code>  }</code>
+      <code>}</code>
+      <code>const animal = new Animal('Mango', 2);</code>
+    </pre>
+  </div>
+</section>
+
+<section class="slide text-small">
+  <h2>Class Inheritance</h2>
+  <pre class="double">
+    <code>class Animal {</code>
+    <code>  constructor(name, age) {</code>
+    <code>    this.name = name;</code>
+    <code>    this.age = age;</code>
+    <code>  }</code>
+    <code>  getName() {</code>
+    <code>    return this.name;</code>
+    <code>  }</code>
+    <code>  getAge() {</code>
+    <code>    return this.age;</code>
+    <code>  }</code>
+    <code>}</code>
+    <code> </code>
+    <code> </code>
+    <code>class Dog extends Animal {</code>
+    <code>  constructor(name, age, breed) {</code>
+    <code>    super(name, age);</code>
+    <code>    this.breed = breed;</code>
+    <code>  }</code>
+    <code>  getFullInfo() {</code>
+    <code>    const name = super.getName();</code>
+    <code>    const age = super.getAge();</code>
+    <code>    const breed = this.breed;</code>
+    <code>    console.log(`${name}, ${age}, ${breed}`);</code>
+    <code>  }</code>
+    <code>}</code>
+    <code>const dog = new Dog('Mango', 2, 'husky');</code>
+    <code>dog.getFullInfo(); // Mango, 2, husky</code>
+    </pre>
+</section>
+
+<section class="slide text-small">
+  <h2>Map - instantiation and methods</h2>
+  <code>let map = new Map([ [key: value], [key: value], ... ]);</code>
+  <p><b><code>Map.set(key, value)</code></b> - записывает в Map пару ключ: значение.</p>
+  <p><b><code>Map.get(key)</code></b> - находит в Map значение по key и возвращает его.</p>
+  <p><b><code>Map.delete(key)</code></b> - находит в Map пару ключ: значение по key и удаляет запись.</p>
+  <p><b><code>Map.clear()</code></b> - очищает Map.</p>
+  <p><b><code>Map.has(key)</code></b> - ищет в Map key и возвращает true\false как результат поиска.</p>
+  <p><b><code>Map.size()</code></b> - возвращает длину Map.</p>
+  <p><b><code>Map.keys()</code></b> - возвращает <u>коллекцию</u> ключей Map.</p>
+  <p><b><code>Map.values()</code></b> - возвращает <u>коллекцию</u> значений Map.</p>
+  <p><b><code>Map.entries()</code></b> - возвращает <u>коллекцию</u> записей Map.</p>
+</section>
+
+<section class="slide">
+  <h2>Map - iteration</h2>
+  <pre class="double">
+    <code>let map = new Map(...);</code>
+    <code>for (let key of map.keys()) {</code>
+    <code>  ...</code>
+    <code>}</code>
+    <code> </code>
+    <code>for (let value of map.values()) {</code>
+    <code>  ...</code>
+    <code>}</code>
+    <code>for (let entry of map.entries()) {</code>
+    <code>  ...</code>
+    <code>}</code>
+    <code> </code>
+    <code>map.forEach((value, key, map) => {</code>
+    <code>  ...</code>
+    <code>});</code>
+  </pre>
+</section>
+
+<section class="slide text-small">
+  <h2>Set - instantiation and methods</h2>
+  <code>let set = new Set([1, 2, 'hello', 21, ...]);</code>
+  <p><b><code>Set.add(value)</code></b> - добавляет value в Set, если оно уникальное.</p>
+  <p><b><code>Set.delete(value)</code></b> - удаляет value из Set.</p>
+  <p><b><code>Set.clear()</code></b> - очищает Set.</p>
+  <p><b><code>Set.has(value)</code></b> - ищет value в Set и возвращает true\false как результат поиска.</p>
+  <p><b><code>Set.size()</code></b> - возвращает длину Set.</p>
+  <p><b><code>Set.values()/Set.keys()/Set.entries()</code></b> - возвращает <u>коллекцию</u> елементов Set.</p>
+</section>
+
+<section class="slide">
+  <h2>Set - iteration</h2>
+  <pre>
+    <code>let set = new Set(...);</code>
+    <code> </code>
+    <code>for (let item of set) {</code>
+    <code>  ...</code>
+    <code>}</code>
+    <code> </code>
+    <code>set.forEach((value, sameValue, set) => {</code>
+    <code>  ...</code>
+    <code>});</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>Дополнительные материалы</h2>
+  <ul>
+    <li>
+      <a href="https://learn.javascript.ru/es-modern" target="_blank">Раздел книги И. Кантора</a>
+    </li>
+    <li>
+      <a href="http://exploringjs.com/es6/ch_core-features.html" target="_blank">'Справочник' по ES6</a>
+    </li>
+    <li>
+      <a href="http://2ality.com/2015/02/es6-classes-final.html" target="_blank">Статья о классах в ES6</a>
+    </li>
+    <li>
+      <a href="http://kangax.github.io/compat-table/es6/" target="_blank">Таблица поддержки нововведений EcmaScript
+        браузерами</a>
+    </li>
+  </ul>
+</section>
+
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+</body>
+
+</html>
